@@ -9,279 +9,555 @@ $template['css']=array('style/public.css');
 foreach ($template['css'] as $val){
     echo "<link rel='stylesheet' type='text/css' href='{$val}' />";
 }
-$php='class1';
+$course_id='20182021299 ';
+$query="select * from CM_course where course_id='{$course_id}'";
+    $result=execute($link,$query);
+    $course=mysqli_fetch_array($result);
+    $query="select * from CM_teacher where tID='{$course['tID']}'";
+    $result=execute($link,$query);
+    $teacher=mysqli_fetch_array($result);
+    
+   $adress='course8.php';
+   if(isset($_POST['submit'])){
+       if($_POST['content']==NULL){
+           skip($adress,'error','评论不能为空');}
+           
+   
+   }
 
+   if(@$_COOKIE['cookie']['name']!=NULL){
+   $query="select * from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
+   $result=execute($link,$query);
+   $student_course=mysqli_fetch_array($result);}
 ?>
 
 <?php include_once 'inc/head.inc.php';
 // var_dump($_COOKIE['cookie']);?>
 
-
-<HTML>
-<head><style type="text/css">
-#bg{
-	width: 60px;
-	height: 16px;
-	background: url("img/star_gray.png");
-}
-#over{
-	height:16px;
-	background:url("img/star_org.png") no-repeat;
-}
-</style></head>
-<body class="bg-bright3" data-bg-color="bg-bright3">
-    <div class="king-page-box">
-		<div id="Layer1" style="position: absolute ; left:0px; top:0px;width:100%; height:150%; z-index:-1">    
-		<img src="http://www.pptbz.com/d/file/p/201708/small7d1a2bf18ed25a3e1ec98d8b2cc0b609.jpg"  style=" width:100%;height:100% ;">    
-		</div>
-        <div class="king-layout1-header">
-            <div class="container-fluid mb0 ">
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"style="margin-left:-20px" >
-						
-                        <a href=""><img class="img-thumbnail " src="https://edu-image.nosdn.127.net/288647B04DED46F53F2154ABF422099B.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100"style="width: 100%;height:270px"> </a></div>
-                    <div class="col-md-3"style="margin-left: 40px;">
-                        <div  class="">
-                        <div id="Layer1" style="position: absolute ; left:0px; top:0px;width:100%; height:270px; z-index:-1">    
-		<img src="http://www.pptbz.com/d/file/p/201708/small7d1a2bf18ed25a3e1ec98d8b2cc0b609.jpg"  style=" width:100%;height:100% ;">    
-		</div>
-                            <h4>宇宙新概念</h4>
-                            <div style="padding-left: 20px;marign-top：0">
-                            <br><label>武汉大学</label>
-                            <br><label>电子信息学院</label>
-                            <br><label>科学精神与生命关怀</label>
-                            <br><label>老师：赵江南</label>
-                            <br><label>课程ID：20182022190</label></div>
-                             
-                        <form class="form-horizontal">
-                            <div class="form-group clearfix">
-                                <div class="col-sm-9 col-sm-offset-3">
-                                    <button type="button" class="king-btn mr10  king-success">选择课程</button>
-                                    
-                                </div>
-                            </div>
-                        </form>
-                        <form class="form-horizontal">
-                            <div class="form-group clearfix "style="margin-right: 60px;">
-                                <label class="col-sm-3 control-label bk-lh30 pt0">评分：</label>
-                 
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- Google Fonts Includes -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!-- Favi icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="css2/assets/bootstrap.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="css2/assets/animate.css">
+    <!-- Button Hover animate css -->
+    <link rel="stylesheet" href="css2/assets/hover-min.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="css2/assets/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="css2/assets/meanmenu.min.css">
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="css2/assets/owl.carousel.min.css">
+    <!-- slick css -->
+    <link rel="stylesheet" href="css2/assets/slick.css">
+    <!-- chosen.min-->
+    <link rel="stylesheet" href="css2/assets/jquery-customselect.css">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="css2/assets/font-awesome.min.css">
+    <!-- magnific Css -->
+    <link rel="stylesheet" href="css2/assets/magnific-popup.css">
+    <!-- Revolution Slider -->
+    <link rel="stylesheet" href="css2/assets/revolution/layers.css">
+    <link rel="stylesheet" href="css2/assets/revolution/navigation.css">
+    <link rel="stylesheet" href="css2/assets/revolution/settings.css">
+    <!-- Preloader css -->
+    <link rel="stylesheet" href="css2/assets/preloader.css"> 
+    <!-- custome css -->
+    <link rel="stylesheet" href="css2/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="css2/responsive.css">
+    <link rel="stylesheet" href="css2/master.css">
+    <!-- modernizr css -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+<body>
+<!-- header area start here -->
+<header>
+    <div class="main_nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-2 col-xs-12 tap-v-responsive">
+                    <div class="logo-area">
+                        <a href="index.html"><img src="images/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <nav>
+                        <ul class="main-menu text-right">
+                            <li class="active"><a href="index.php">首页</a>
+                            </li>
+                            <li><a href="course.php">课程资源</a>
+                                <ul class="dropdown">
+                                    <li><a href="">计算机类</a></li>
+                                    <li><a href="">文学类</a></li>
+                                    <li><a href="">通识类</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="pinglun.php">课程评论</a>
+                                <ul class="dropdown">
+                                    <li><a href="">计算机类</a></li>
+                                    <li><a href="">文学类</a></li>
+                                    <li><a href="">通识类</a></li>
+                                </ul>
+                            </li>
                             
-                                
-                            </div>
-                        </form>
+                            <li><a href="person.php">个人信息</a>
+                               
+                            </li>
+                            <li><a href="ourteam.php">关于我们</a>
+                            </li>                           
+                        </ul>
+                    </nav>
+                </div> <!-- main menu end here -->
+            </div>
+        </div>
+    </div> <!-- header-bottom area end here -->
+</header> <!-- header area end here -->
+
+    <!-- blog breadcrumb version one strat here -->
+    <section class="breadcrumb-blog-version-one">
+        <div class="single-bredcurms" style="background-image:url('images/bercums/Blogs-Version-01.jpg');">
+           <div class="container">
+               <div class="row">
+                    <div class="col-sm-12">
+                        <div class="bredcrums-content">
+                            <h2>代码全写队</h2>
+                            
+                        </div>
                     </div>
-                    <div class="col-md-3"></div>
                 </div>
             </div>
         </div>
-        <div class="king-layout2-main mt15" style="width:960px;">
-            <div class="container-fluid mb0 ">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="king-tab tab-box ">
-                            <ul id="myTab2" class="nav nav-tabs king-nav-tabs1 king-tab-info">
-                                <li class="active"> <a data-toggle="tab" href="#demo1">课程详情</a> </li>
-                                <li> <a data-toggle="tab" href="#demo2">课程评价</a> </li>
-                            </ul>
-                            <div class="tab-content ">
-                                <div class="tab-pane fade in active" id="demo1">
-                                    <div class="king-instruction  king-instruction-info ">
-                                     <p>课程信息</p>
-									 <label>宇宙是如何起源，又是如何演化、发展、灭亡的？自古以来一直是人类最感兴趣和不断探索的问题之一，这也是本课程要向学习者介绍的内容，包括牛顿的万有引力理论，爱因斯坦的广义相对论，霍金的宇宙观，时间、历法，太阳系，恒星，星系，致密天体，宇宙论等。
-                                      </label>
-                                    </div>
-                                    <div class="panel panel-default mb0">
-                                        <div class="panel-heading"> 课程概论 </div>
-                                        <div class="panel-body">
-											<h6>   在当今社会，向学习者介绍科学的宇宙观和方法论显得很有必要，这在很大程度上有利于学习者掌握用辩证唯物主义的观点观察问题和解决问题的能力。
+    </section><!-- blog breadcrumb version one end here -->
 
-  浩瀚的宇宙展现了无比的壮丽，同时也展现了无穷的神秘。人类自从诞生起，就开始了对宇宙的观察和思考。但到目前为止，并没有一种理论能够揭示所有的宇宙奥秘，就连宇宙是如何起源的这一似乎再简单不过的问题，其理论也正在不断争论、发展之中。是什么物质创生了宇宙？创生宇宙的物质从何而来？是什么力量使创生宇宙的物质创生了宇宙？无数的疑惑，无数的问题，促使人们进行无尽的思索，无尽的遐想，这种遐想甚至超越了常人思维的极限。本课程向学习者介绍传统的经典理论，最新的天文学发现和研究成果，开拓学习者的知识面。
-</h6>
-											</div>
-                                    </div>
-                                    <div class="panel panel-default mb0">
-                                        <div class="panel-heading"> 课程大纲 </div>
-                                        <div class="panel-body">
-							<div>
-										     <br><label>第一章 绪论</label>
-                                              <br><label>第二章 太阳系</label>
-                                               <br><label>第三章 恒星</label>
-                                                <br><label>第四章 星系</label>
-                                              <br><label>第五章 特殊天体</label>
-                                               <br><label>第六章 宇宙论</label>
-                                               <br><label>第七章 地外生命</label>
-                                               <br><label>第八章  霍金的宇宙</label>
-                                                 <br><label>第九章  宇宙探索</label>
-                                                   <br><label>第十章  中国天文学和空间探测情况</label>
+    <!-- Start blog -->
+    <section id="blog" class="section-paddings single section page blog_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                        <!-- Single blog -->
+                        <div class="single-blog">
+                            <img src="https://edu-image.nosdn.127.net/E8448DD7703A745D89CB7FCC48AE6E9B.png?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" style="width: 550px;height:350px">
+                            <div class="blog-content">
+                               <h1><label><?php echo $course['course_name'] ?></label><label style="margin-left: 300px" ><?php  echo $course['course_score'];?></label> </h1>
+                                <h4>
+                           <label>学类： <?php echo $course['course_type'] ?></label>
+                            <label>老师：<?php echo $teacher['teacher_name']?></label>
+                           <label>课程ID：<?php echo $course['course_id'] ?></label></h4>
+                                <div class="meta">
+                                   
+                                    <span><i class="fa fa-calender"></i>June 19</span>
+                                    <span><i class="fa fa-comments"></i>65 Comments</span>
+									<button  class="travel-booking-btn hvr-shutter-out-horizontal" type="submit" name="xuanke" style="margin-left: 300px;"><?php 
+                                    if(@$_COOKIE['cookie']['name']==NULL){echo '选择课程';}else{$query="select*from CM_student_course where student_number='{$student_course['student_number']}' and cID='{$course['cID']}'";
+   $result_name=execute($link,$query); if(mysqli_fetch_assoc($result_name)){echo '已选';}else{echo '选择课程';}}?></button>
+                                </div>
+                                <p>本课程是“计算机科学导论”国家级精品课程的MOOC版本，本课程将课程的结构建立在计算学科认知模型的基础上，并以计算机科学的内容为背景，借助大量案例，在学科思想与方法层面，对学生认知计算学科进行导引，着力提高学生在复杂问题求解，系统设计，以及人类行为理解方面的计算思维能力。</p>
+                                <p><strong>课程概论</strong>
+                                </p>
+                                <p>本课程要求学生了解计算学科的认知模型；学科的基本问题；学科抽象、理论和设计三个形态；学科中的核心概念、数学方法、系统科学方法，以及社会和职业问题等内容。“复杂”这个词贯穿本课程的始终，要求学生通过大量案例的训练，初步掌握运用计算机科学的基础概念控制和降低复杂工程问题的思想与方法。
+</p>
+                               <p><strong>课程大纲</strong>
+                               </p>
+                                               <br><label>第一章 绪论</label>
+                                              <br><label>第二章 计算学科的基本问题</label>
+                                               <br><label>第三章 计算学科的3个学科形态</label>
+                                                <br><label>第四章  计算学科的核心概念</label>
+                                              <br><label>第五章 计算学科中的数学方法</label>
+                                               <br><label>第六章 计算学科中的系统科学方法</label>
+                                               <br><label>第七章 社会与职业问题</label>
+                                               <br><label>第八章 探讨与展望</label>
                                                
+                            </div>
+                        </div><!--/ End Single blog -->
 
-											</div>
-											
-											
-											</div>
-                                    </div>
+                       <!-- Blog Comment Wrappper-->
+                        <div class="commnet-wrapper">
+                            <div class="items_title">
+                                <h3 class="title">课程评论</h3>
+                            </div>
+                             <div class="comment-list-items">
+                                <div class="comment-list-wrapper">
+                                       <label style="margin-left: 30px;"><h1>分数：<?php echo $course['course_score']?></h1></label>
+                              <?php if(@$_COOKIE['cookie']['name']!=NULL){
+                                 $query="select * from CM_student_course where student_number='{$student_course['student_number']}' and cID='{$course['cID']}' ";
+                                   $result=execute($link,$query);
+                                   
+                                    if($data=mysqli_fetch_assoc($result)){
+                                ?>
+                                <Form method="post">
+                             <span>  <br><input type="text" name="content"></span>
+                                  
+                                <br><input type="submit" value="提交评论"name="submit">
+                                    <input type="button" value="课程打分" name="submit2"><br>
+                                   </Form> 
+                                   <?php }}else {?>
+                                    <button  class="king-btn-demo king-btn king-success"  name="submit3" style="margin-left: 450px;">评论</button>
+                                  <?php }?>
+                                  <?php 
+                                  if(isset($_POST['submit'])){
+                                      
+                                          $time=date('20y年m月d日', time());
+                                          echo $time;
+                                          @$query="insert into CM_comment (course_id,student_name,comment_time,comment_quality,comment_content,comment_photo) values('{$course['course_id']}',
+                                          '{$student_course['student_name']}','{$time}','','{$_POST['content']}','')";
+                                          execute($link,$query);
+                                          skipto($adress,'ok','登录成功！');
+                                           
+                                  }
+                                
+  ?>
+
+                   
                                 </div>
-                                <div class="tab-pane fade in" id="demo2" style=""> 
-								<label><h1>4.8</h1></label>
+                                <div class="comment-list-wrapper">
+                                   
+                                        
+                                <?php  $query="select 
+course_id,student_name,comment_time,comment_quality,comment_content,comment_photo from CM_comment where course_id ='{$course_id}' order by commentID desc";
+			$result_content=execute($link,$query);
+			while($data_content=mysqli_fetch_assoc($result_content)){?>
+								
 								<div class="king-instruction  king-instruction-info ">
-                                <br><label><b>匿名</b></label> 
-								<br><label>不点名每节课都有作业不过是最后一起交的那种。  </label>
+                                <br><label><h3><?php echo $data_content['student_name' ];?></h3></label> 
+                                 <label style="padding-left:20px"><?php echo $data_content['comment_time'];?></label> 
+                                  <label style="padding-left:20px">情绪：<?php echo $data_content['comment_quality'];?></label> 
+                                 
+								<br><label><?php echo $data_content['comment_content'];?>  </label>
                                     </div>
-								
-								<br><label><b></b></label> 
-								
-								<div class="king-instruction  king-instruction-info ">
-								<br><label><b>邹心愿</b></label> 
-								<br><label>讲的还是挺实用的，能学到很多东西，最后是论文方式，还要提交一份作品</label></div>
-								
-								<br><label><b></b></label> 
+								<?php }?>                              
+                                   
+                                </div>
+                            </div> 
 							
-								<div class="king-instruction  king-instruction-info ">
-								<br><label>	<b>刘小菁</b></label> 
-								<br><label>教的东西都是关于多媒体的，很实用，不点名，交作业和论文，给分很好</label></div>
-								<br><label><b></b></label> 
-								<div class="king-instruction  king-instruction-info ">
-								<br><label><b>匿名</b></label> 
-								<br><label>	老师讲的很好，平时有小作业，期末论文一篇，就是高分不多</label></div>
-								<br><label><b></b></label> 
-								<div class="king-instruction  king-instruction-info ">
-								<br><label><b>匿名</b></label> 
-								<br><label>最后有个论文和大作业，几个老师一起开的课，给分也不错</label></div>
-								<br><label><b></b></label> 
-								</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="container-fluid mb0 ">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="king-tab tab-box ">
-                                        <ul id="myTab2" class="nav nav-tabs king-nav-tabs1 king-tab-info">
-                                            <li class="active"> <a data-toggle="tab" >授课老师</a> </li>
-                                        </ul>
-                                        <div class="tab-content ">
+                            <!--  Leave Commnent Wrapper -->
+                   </div>
+                  </div>
+                  
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 blog_wrapper_right ">
+                      <div class="blog-right-items">
+                  
+                          <div class="search_blog widget_single">
+                              <div class="form-full-box">
+                                  <form>
+                                      <div class="form-group">
+                                          <input class="form-control" name="name" placeholder="课程名称"  type="text">
+                                          <button class="register-btn" type="submit"><i class="fa fa-search"></i></button>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                  
+                  
+                          <div class="recent_post_wrapper widget_single">
+                              <div class="items-title">
+                                  <h3 class="title">相关课程</h3>
+                              </div>
+                              <div class="single-post">
+                                  <div class="recent_img">
+                                       <a href="course8.php" title=""><img src="https://edu-image.nosdn.127.net/E8448DD7703A745D89CB7FCC48AE6E9B.png?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-fluid"></a>
+                                  </div>
+                                  <div class="post_title">
+                                      <a href="course8.php" title="">自然计算方法导论</a>
+                                      <div class="post-date">
+                                          <span>May 29, 2019</span>
+                                      </div>
+                                  </div>
+                              </div>
+                  
+                              <div class="single-post">
+                                  <div class="recent_img">
+                                      <a href="course3.php" title=""><img src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-fluid"></a>
+                                  </div>
+                                  <div class="post_title">
+                                      <a href="course3.php" title="">信息安全概论</a>
+                                      <div class="post-date">
+                                          <span>25 August, 2019</span>
+                                      </div>
+                                  </div>
+                              </div>
+                  
+                              <div class="single-post">
+                                  <div class="recent_img">
+                                      <a href="course2.php" title=""><img src="https://edu-image.nosdn.127.net/76F0C19078017F0FA44FFBA7A6B83E9B.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" alt="" class="img-fluid"></a>
+                                  </div>
+                                  <div class="post_title">
+                                      <a href="course2.php" title="">物联网应用及安全</a>
+                                      <div class="post-date">
+                                          <span>25 August, 2019</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                           <div class="recent_post_wrapper widget_single">
+                              <div class="items-title">
+                                  <h3 class="title">课程老师</h3>
+                              </div>
+                              <div class="single-post">
+                                  <div class="recent_img">
+                                       <a href="" title=""><img src="images/blog/f4.jpg" alt="" class="img-fluid"></a>
+                                  </div>
+                                  <div class="post_title">
+                                      <a href="" title="">刘华骏</a>
+                                     
+                                  </div>
+                              </div>
                                             
-											<div class="container-fluid mb0 ">
-                                                    <div class="row">
-                                                        
-														<div class="col-md-4"style="padding-top: 5px;">
-														<img class="img-thumbnail" src="http://cdn.duitang.com/uploads/item/201406/07/20140607105205_zzxxK.thumb.600_0.jpeg">	
-														</div>
-														<div class="col-md-8"style="padding-top: 5px;">
-														<label>徐晓辉</label>	
-														</div>
-														
-                                                    </div>
-                                                </div>
-											<div class="container-fluid mb0 ">
-												        <div class="row">
-												            
-															<div class="col-md-4"style="padding-top: 5px;">
-															<img class="img-thumbnail " src="http://cdn.duitang.com/uploads/item/201509/14/20150914131826_NTGxR.thumb.700_0.jpeg">	
-															</div>
-															<div class="col-md-8"style="padding-top: 5px;">
-															<label>黄爽</label>	
-															</div>
-															
-												        </div>
-												    </div>
-												    <div class="container-fluid mb0 ">
-												        <div class="row">
-												            
-															<div class="col-md-4"style="padding-top: 5px;">
-															<img class="img-thumbnail " src="http://cdn.duitang.com/uploads/item/201409/12/20140912231628_JLxsX.thumb.700_0.png">	
-															</div>
-															<div class="col-md-8"style="padding-top: 5px;">
-															<label>刘华俊</label>	
-															</div>
-															
-												        </div>
-												    </div>
-												    <div class="container-fluid mb0 ">
-												        <div class="row">
-												            
-															<div class="col-md-4"style="padding-top: 5px;">
-															<img class="img-thumbnail " src="http://img5.duitang.com/uploads/item/201402/25/20140225001129_hnU2A.thumb.700_0.jpeg">	
-															</div>
-															<div class="col-md-8"style="padding-top: 5px;">
-															<label>张影</label>	
-															</div>
-															
-												        </div>
-												    </div>
-											
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container-fluid mb0 ">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="king-tab tab-box ">
-                                        <ul id="myTab2" class="nav nav-tabs king-nav-tabs1 king-tab-info">
-                                            <li class="active"> <a data-toggle="tab" >相关课程</a> </li>
-                                        </ul>
-                                        <div class="tab-content ">
-                                          <div class="container-fluid mb0 ">
-                                                  <div class="row">
-                                                     <div class="col-md-4"style="padding-top: 5px;">
-                                                    <img class="" src="https://edu-image.nosdn.127.net/6CE1F9C631F5BA4EF0FADE575E526585.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100"style="width: 80px;height:50px">	
-                                                    </div>
-                                                    <div class="col-md-8" >
-                                                    <div style="margin-left:5px;padding-top:20px">
-                                                   <a href="course6.php"style="margin-left: 10px;">航空航天概论</a>
-                                                    </div></div>
-                                                  </div>
-                                              </div>
-											  	<div class="container-fluid mb0 ">
-											          <div class="row">
-											              
-											  	    <div class="col-md-4"style="padding-top: 5px;">
-                                                    <img class="" src="https://edu-image.nosdn.127.net/E8448DD7703A745D89CB7FCC48AE6E9B.png?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100"style="width: 80px;height:50px">	
-                                                    </div>
-                                                    <div class="col-md-8" >
-                                                    <div style="margin-left:5px;padding-top:20px">
-                                                    <a href="course2.php"style="margin-left: 10px;">自然计算方法导论</a>
-                                                    </div></div>
-											          </div>
-											      </div>
-											      <div class="container-fluid mb0 ">
-											          <div class="row">
-											              
-											  	    <div class="col-md-4"style="padding-top: 5px;">
-                                                    <img class="" src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100"style="width: 80px;height:50px">	
-                                                    </div>
-                                                    <div class="col-md-8" >
-                                                    <div style="margin-left:5px;padding-top:20px">
-                                                  	<a href="course4.php"style="margin-left: 10px;">信息安全概论</a>
-                                                    </div></div>
-											          </div>
-											      </div>
-											      <div class="container-fluid mb0 ">
-											          <div class="row">
-											              
-											  	    <div class="col-md-4"style="padding-top: 5px;">
-                                                    <img class="" src="https://edu-image.nosdn.127.net/A6E4E4BF3EFC51D90BF8B0D4464E93BC.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100"style="width: 80px;height:50px">	
-                                                    </div>
-                                                    <div class="col-md-8" >
-                                                    <div style="margin-left:5px;padding-top:20px">
-                                                    <a href="course9.php"style="margin-left: 10px;">遥感技术应用及发展</a>
-                                                    </div></div>
-											          </div>
-											      </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+                              <div class="single-post">
+                                  <div class="recent_img">
+                                      <a href="" title=""><img src="images/blog/f5.jpg" alt="" class="img-fluid"></a>
+                                  </div>
+                                  <div class="post_title">
+                                      <a href="" title="">徐晓辉</a>
+                                      
+                                  </div>
+                              </div>
+                                            
+                              <div class="single-post">
+                                  <div class="recent_img">
+                                      <a href="" title=""><img src="images/blog/f6.jpg" alt="" class="img-fluid"></a>
+                                  </div>
+                                  <div class="post_title">
+                                      <a href="" title="">黄爽</a>
+                                     
+                                  </div>
+                              </div>
+                          </div>
+						  
+						   
+                  
+                          <div class="popular_tags widget_single">
+                              <div class="items-title">
+                                  <h3 class="title">课程类型</h3>
+                              </div>
+                              <div class="tags-items">
+                                  <ul class="list-unstyled">
+                                      <li><a href="" title="">计算机类</a></li>
+                                      <li><a href="" title="">文学类</a></li>
+                                      <li><a href="" title="">通识类</a></li>
+                                      <li><a href="" title="">。。。</a></li>
+                                  </ul>
+                              </div>
+                          </div>  
+                      </div>
+                  </div><!-- ./ End  Blog Right Wrapper--><!-- ./ End  Blog Right Wrapper-->
+           
+        </div></div>
+    </section>
+
+
+<footer class="footer-area">
+	<div class="container">
+		<div class="row">
+			<!-- footer left -->
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3">
+				<div class="single-footer">
+					<div class="footer-title">
+						<h3><a href=""><img src="images/logo.png" alt=""></a></h3>
+					</div>
+					<div class="footer-left">
+						<div class="footer-logo">
+							<p>代码全写队 <br> 产品经理： 项目经理： 技术经理： 成员：</p>
+						</div>
+						<ul class="footer-contact">
+							<li><img class="map" src="images/icon/map.png" alt="">武汉大学</li>
+							<li><img class="map" src="images/icon/phone.png" alt="">+123-456-7890</li>
+							<li><img class="map" src="images/icon/gmail.png" alt="">123456789@qq.com</li>
+						</ul>
+					</div>
+				</div>
+			</div> <!-- footer left -->
+
+			<!-- footer destination -->
+			<div class="col-12 col-sm-6 col-md-6 col-lg-2">
+				<div class="single-footer">
+					<div class="footer-title">
+						<h3>Quick Link</h3>
+					</div>
+					<ul class="list-unstyled">
+						<li><a href="index.php" title="">首页</a></li>
+						<li><a href="course.php" title="">课程资源</a></li>
+						<li><a href="" title="">课程评论</a></li>
+						<li><a href="" title="">课程评分</a></li>
+						<li><a href="person.php" title="">个人信息</a></li>
+						<li><a href="ourteam.php" title="">关于我们</a></li>
+						
+					</ul>
+				</div>
+			</div>	<!-- footer destination -->
+
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4">
+				<div class="single-footer">
+					<div class="single-recent-post">
+						<div class="footer-title">
+							<h3>Recent News</h3>
+						</div>
+						<ul class="recent-post">
+							<li>
+								<a href="course5.php">
+									<div class="post-thum">
+										<img src="https://edu-image.nosdn.127.net/8282FBC079673EA3A28339617E2F69E5.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" alt="" class="img-rounded"style="width: 200px;height: 120px;">
+									</div>
+									<div class="post-content">
+										<p>课程名 :</p><br><p>身边的材料学 </p>
+                                       <br><p>课程ID：20182018155</p>
+										
+										
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="course3.php">
+									<div class="post-thum">
+										<img src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-rounded"style="width: 200px;height: 120px;">
+									</div>
+									<div class="post-content">
+										<p>课程名 :</p><br><p>信息安全概论 </p>
+                                        <br><p>课程ID：20182047080</p>
+										
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="course1.php">
+									<div class="post-thum">
+										<img src="https://edu-image.nosdn.127.net/4A5DADAAACFEEFE79DFF9C19E626C659.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-rounded"style="width: 200px;height: 120px;">
+									</div>
+									<div class="post-content">
+										<p>课程名 :</p><br><p>C语言程序设计 </p>
+                                        <br><p>课程ID：20182047086</p>
+										
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>	<!-- footer latest news -->
+
+			<!-- footer contact -->
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 f-phone-responsive">
+				<div class="single-footer">
+					<div class="footer-title">
+						<h3>联系我们</h3>
+					</div>
+					<div class="footer-contact-form">
+						<form action="#">
+							<ul class="footer-form-element">
+								<li>
+									<input type="text" name="email" id="email" placeholder="" value="Email Address" onblur="if(this.value==''){this.value='Email Address'}" onfocus="if(this.value=='Email Address'){this.value=''}">
+								</li>
+								<li class="text_area">
+									<textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+									<button type="submit">Send</button>
+								</li>
+								<li>
+									
+								</li>
+							</ul>
+						</form>
+					</div>
+					<div class="footer-social-media">
+						<div class="social-footer-title">
+							<h3>Follow Us</h3>
+						</div>
+						<ul class="footer-social-link">
+							<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li class="gplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>	<!-- footer contact -->
+		</div>
+	</div>
+	<div class="footer_bottom_wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-12">
+					<div class="copy_right_wrapper">
+						<div><p>©2019 代码全写队</p></div>
+						<ul class="payicon pull-right">
+							<li>We Accept : </li>
+							<li><a href="" title=""><img src="images/payicon01.png" alt=""></a></li>
+							<li><a href="" title=""><img src="images/payicon02.png" alt=""></a></li>
+							<li><a href="" title=""><img src="images/payicon03.png" alt=""></a></li>
+							<li><a href="" title=""><img src="images/payicon04.png" alt=""></a></li>
+							<li><a href="" title=""><img src="images/payicon05.png" alt=""></a></li>
+							<li><a href="" title=""><img src="images/payicon06.png" alt=""></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer> <!-- end footer -->
+
+<div class="to-top pos-rtive">
+    <a href="#"><i class = "fa fa-angle-up"></i></a>
+</div><!-- Scroll to top-->
+
+    <!-- ============================
+            JavaScript Files
+    ============================= -->
+
+    <!-- jquery latest version -->
+    <script src="js/vendor/jquery-3.2.0.min.js"></script>
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>  
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- owl.carousel js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- slick js -->
+    <script src="js/slick.min.js"></script>
+    <!-- meanmenu js -->
+    <script src="js/jquery.meanmenu.min.js"></script>
+    <!-- jquery-ui js -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- wow js -->
+    <script src="js/wow.min.js"></script>
+    <!-- counter js -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Countdown js -->
+    <script src="js/jquery.countdown.min.js"></script>
+    <!-- waypoints js -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- Isotope js -->
+    <script src="js/isotope.pkgd.min.js"></script>
+    <!-- magnific js -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Image loaded js -->
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <!-- chossen js -->
+    <script src="js/chosen.jquery.min.js"></script>
+    <!-- Jquery plugin -->
+    <script src="js/plugins.js"></script>
+    <!-- select2 js plugin -->
+    <script src="js/select2.min.js"></script>    
+    <script src="js/colors.js"></script>
+    <!-- Jquery plugin -->
+    <script src="js/jquery-customselect.js"></script>
+    <!-- main js -->
+    <script src="js/custom.js"></script>
 </body>
-</HTML>
+</html>

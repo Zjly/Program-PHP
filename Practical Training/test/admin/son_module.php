@@ -14,7 +14,7 @@ $template['css']=array('style/public.css');
 <div id="main" style = "margin-left:250px">
 	<div class="title">老师版块列表</div>
 	<form method="post">
-	<table id="blocks" class="list" style="margin-top:25px;width:500px;table-layout:fixed">
+	<table id="blocks" class="list" style="margin-top:25px;width:1000px;table-layout:fixed">
 		<tr>
 			<th>序号</th>	 	 	
 			<th>老师名字</th>

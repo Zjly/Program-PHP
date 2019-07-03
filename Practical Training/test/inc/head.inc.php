@@ -23,9 +23,7 @@ $str=<<<A
                 <div style="width:100%;height:50px;" class="king-header king-header4 ">
                     <div class="king-header-inner">
                         <div class="king-header-brand">
-                            <a href="javascript:;">
-                                <img src="https://magicbox.bk.tencent.com/static_api/v3/components/horizontal_nav8/images/logo.png" height="30">
-                            </a>
+                            
                         </div>
                         
                         <div class="king-header-list list1">
@@ -76,9 +74,7 @@ $str=<<<A
                 <div style="width:100%;height:50px;" class="king-header king-header4 ">
                     <div class="king-header-inner">
                         <div class="king-header-brand">
-                            <a href="javascript:;">
-                                <img src="https://magicbox.bk.tencent.com/static_api/v3/components/horizontal_nav8/images/logo.png" height="30">
-                            </a>
+
                         </div>
                         
                         <div class="king-header-list list1">
@@ -132,9 +128,7 @@ $str=<<<A
                 <div style="width:100%;height:50px;" class="king-header king-header4 ">
                     <div class="king-header-inner">
                         <div class="king-header-brand">
-                            <a href="javascript:;">
-                                <img src="https://magicbox.bk.tencent.com/static_api/v3/components/horizontal_nav8/images/logo.png" height="30">
-                            </a>
+                           
                         </div>
                         
                         <div class="king-header-list list1">

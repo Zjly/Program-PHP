@@ -39,7 +39,7 @@ if(empty($_COOKIE['cookie']['name'])){
                             </div>
                         </div>
     <div class="container">
-	<table id="blocks" class="list" style="margin-top:25px;width:500px;table-layout:fixed">
+	<table id="blocks" class="list" style="margin-top:25px;width:1000px;table-layout:fixed">
 		<tr>
 			<th>序号</th>	 	 	
 			<th>用户名</th>
@@ -125,10 +125,9 @@ A;
         <span id="spanLast">Last</span>  
         The <span id="spanPageNum"></span> Page/Total <span id="spanTotalPage"></span> Page
     </div>
-    </div>
+	  </div>
+	
     </form>
     </div>
-    </body>
- </html>
- 
+    </body> 
 
