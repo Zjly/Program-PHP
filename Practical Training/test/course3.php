@@ -2,7 +2,7 @@
 include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
-
+include_once 'inc/page.inc.php';
 $link=connect();
 $member_id=is_login($link);
 $template['css']=array('style/public.css');
@@ -10,25 +10,9 @@ foreach ($template['css'] as $val){
     echo "<link rel='stylesheet' type='text/css' href='{$val}' />";
 }
 $course_id='20182047080';
-$query="select * from CM_course where course_id='{$course_id}'";
-    $result=execute($link,$query);
-    $course=mysqli_fetch_array($result);
-    $query="select * from CM_teacher where tID='{$course['tID']}'";
-    $result=execute($link,$query);
-    $teacher=mysqli_fetch_array($result);
-    
-   $adress='course3.php';
-   if(isset($_POST['submit'])){
-       if($_POST['content']==NULL){
-           skip($adress,'error','评论不能为空');}
-           
-   
-   }
 
-   if(@$_COOKIE['cookie']['name']!=NULL){
-   $query="select * from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
-   $result=execute($link,$query);
-   $student_course=mysqli_fetch_array($result);}
+   $adress='course3.php';
+  include_once 'index.inc/index1.inc.php';
 ?>
 
 <?php include_once 'inc/head.inc.php';
@@ -80,6 +64,18 @@ $query="select * from CM_course where course_id='{$course_id}'";
     <link rel="stylesheet" href="css2/master.css">
     <!-- modernizr css -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+ <!-- 视频 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+body{background-color: #222}
+.videolist { position:relative; float:left; width:500px; height:300px; margin-right:50px; margin-top:15px; margin-bottom:30px; }
+.videolist:hover{ cursor: pointer; }
+.videoed { display:none; width:50px; height:50px; position: absolute; left:45%; top:45%; z-index:99; border-radius:100%; }
+.videos{ display:none; border: 1px solid #080808; position:fixed; left:50%; top:50%; margin-left:-320px; margin-top:-210px; z-index:100; width:640px; height:360px; }
+.vclose { position:absolute;right:1%; top:1%; border-radius:100%; cursor: pointer; }
+</style>
+    
 </head>
 <div id="loader-wrapper">
     <div id="loader"></div>
@@ -133,7 +129,10 @@ $query="select * from CM_course where course_id='{$course_id}'";
 
     <!-- blog breadcrumb version one strat here -->
     <section class="breadcrumb-blog-version-one">
-        <div class="single-bredcurms" style="background-image:url('images/bercums/Blogs-Version-01.jpg');">
+        <div class="single-bredcurms">
+         <div id="Layer1" style="position: absolute ; left:0px; top:0px;width:100%; height:130%; z-index:-1">    
+			 <img src="http://img.1ppt.com/uploads/allimg/1812/1_181225152355_1.jpg"  style=" width:100%;height:450px;">    
+			 </div>
            <div class="container">
                <div class="row">
                     <div class="col-sm-12">
@@ -146,34 +145,52 @@ $query="select * from CM_course where course_id='{$course_id}'";
             </div>
         </div>
     </section><!-- blog breadcrumb version one end here -->
+<section id="blog" class="section-paddings single section page blog_wrapper">
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-sm-12 col-xs-12">
+<!-- Single blog -->
+<div class="single-blog">
 
-    <!-- Start blog -->
-    <section id="blog" class="section-paddings single section page blog_wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-sm-12 col-xs-12">
-                        <!-- Single blog -->
-                        <div class="single-blog">
-                            <img src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" style="width: 550px;height:350px">
+<div class="video">
+	<div class="container" >
+		<div class="videolist" vpath="v1.jpg" ipath="ckin.mp4">
+			
+			<img src="img/v1.jpg" width="540px" height="300px" />
+			<div class="vtime">2018-06-22</div>
+			<img src="img/play.png" class="videoed">
+		</div>
+		
+		
+		<div class="videos"></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js2/jquery.min.js"></script>
+<script type="text/javascript">
+$('.videolist').each(function(){ //遍历视频列表
+	$(this).hover(function(){ //鼠标移上来后显示播放按钮
+		$(this).find('.videoed').show();
+	},function(){
+		$(this).find('.videoed').hide();
+	});
+	$(this).click(function(){ //这个视频被点击后执行
+		var img = $(this).attr('vpath');//获取视频预览图
+		var video = $(this).attr('ipath');//获取视频路径
+		$('.videos').html("<video id=\"video\" poster='"+img+"' style='width: 640px' src='"+video+"' preload=\"auto\" controls=\"controls\" autoplay=\"autoplay\"></video><img onClick=\"close1()\" class=\"vclose\" src=\"img/gb.png\" width=\"25\" height=\"25\">");
+		$('.videos').show();
+	});
+});
+
+function close1(){
+	var v = document.getElementById('video');//获取视频节点
+	$('.videos').hide();//点击关闭按钮关闭暂停视频
+	v.pause();
+	$('.videos').html();
+}
+</script>
                             <div class="blog-content">
-                                <h1><label><?php echo $course['course_name'] ?></label><label style="margin-left: 300px" ><?php  echo $course['course_score'];?></label> </h1>
-                                <h4>
-                           <label>学类： <?php echo $course['course_type'] ?></label>
-                            <label>老师：<?php echo $teacher['teacher_name']?></label>
-                           <label>课程ID：<?php echo $course['course_id'] ?></label></h4>
-                                <div class="meta">
-                                   
-                                    <span><i class="fa fa-calender"></i>June 19</span>
-                                    <span><i class="fa fa-comments"></i>65 Comments</span>
-									<button  class="travel-booking-btn hvr-shutter-out-horizontal" type="submit" name="xuanke" style="margin-left: 300px;"><?php 
-                                    if(@$_COOKIE['cookie']['name']==NULL){echo '选择课程';}else{$query="select*from CM_student_course where student_number='{$student_course['student_number']}' and cID='{$course['cID']}'";
-   $result_name=execute($link,$query); if(mysqli_fetch_assoc($result_name)){echo '已选';}else{echo '选择课程';}}?></button>
-                                </div>
-                                <p>随着信息技术的发展以及计算机应用的普及，网络环境中的信息安全与人们的生活、工作和学习息息相关。本课程主要介绍信息安全的基本概念，密码学的基本术语和原理，以及日常使用中安全知识和技能。由于信息安全的核心是密码学，所以密码学也是本课程的重点。</p>
-                                <p><strong>课程概论</strong>
-                                </p>
-                                <p>随着信息技术的发展以及计算机应用的普及，网络环境中的信息安全与人们的生活、工作和学习息息相关。本课程主要介绍信息安全的基本概念，密码学的基本术语和原理，以及日常使用中安全知识和技能。由于信息安全的核心是密码学，所以密码学也是本课程的重点。本课程由绪论、信息安全初步、信息安全技术、传统密码学、公钥密码算法、Hash函数、基于身份的公钥密码学、数字签名、密钥管理和密码学中的基本数学知识组成。
-</p>
+                                <?php include_once 'index.inc/index2.inc.php';?>
                                <p><strong>课程大纲</strong>
                                </p>
                                <br><label>第一章 信息安全绪论</label>
@@ -189,63 +206,7 @@ $query="select * from CM_course where course_id='{$course_id}'";
                         </div><!--/ End Single blog -->
 
                         <!-- Blog Comment Wrappper-->
-                        <div class="commnet-wrapper">
-                            <div class="items_title">
-                                <h3 class="title">课程评论</h3>
-                            </div>
-                             <div class="comment-list-items">
-                                <div class="comment-list-wrapper">
-                                       <label style="margin-left: 30px;"><h1>分数：<?php echo $course['course_score']?></h1></label>
-                              <?php if(@$_COOKIE['cookie']['name']!=NULL){
-                                 $query="select * from CM_student_course where student_number='{$student_course['student_number']}' and cID='{$course['cID']}' ";
-                                   $result=execute($link,$query);
-                                   
-                                    if($data=mysqli_fetch_assoc($result)){
-                                ?>
-                                <Form method="post">
-                             <span>  <br><input type="text" name="content"></span>
-                                  
-                                <br><input type="submit" value="提交评论"name="submit">
-                                    <input type="button" value="课程打分" name="submit2"><br>
-                                   </Form> 
-                                   <?php }}else {?>
-                                    <button  class="king-btn-demo king-btn king-success"  name="submit3" style="margin-left: 450px;">评论</button>
-                                  <?php }?>
-                                  <?php 
-                                  if(isset($_POST['submit'])){
-                                      
-                                          $time=date('20y年m月d日', time());
-                                          echo $time;
-                                          @$query="insert into CM_comment (course_id,student_name,comment_time,comment_quality,comment_content,comment_photo) values('{$course['course_id']}',
-                                          '{$student_course['student_name']}','{$time}','','{$_POST['content']}','')";
-                                          execute($link,$query);
-                                          skipto($adress,'ok','登录成功！');
-                                           
-                                  }
-                                
-  ?>
-
-                   
-                                </div>
-                                <div class="comment-list-wrapper">
-                                   
-                                        
-                                <?php  $query="select 
-course_id,student_name,comment_time,comment_quality,comment_content,comment_photo from CM_comment where course_id ='{$course_id}' order by commentID desc";
-			$result_content=execute($link,$query);
-			while($data_content=mysqli_fetch_assoc($result_content)){?>
-								
-								<div class="king-instruction  king-instruction-info ">
-                                <br><label><h3><?php echo $data_content['student_name' ];?></h3></label> 
-                                 <label style="padding-left:20px"><?php echo $data_content['comment_time'];?></label> 
-                                  <label style="padding-left:20px">情绪：<?php echo $data_content['comment_quality'];?></label> 
-                                 
-								<br><label><?php echo $data_content['comment_content'];?>  </label>
-                                    </div>
-								<?php }?>                              
-                                   
-                                </div>
-                            </div> 
+                        <?php include_once 'index.inc/index3.inc.php';?>
 							
                             <!--  Leave Commnent Wrapper -->
                    </div>
@@ -360,7 +321,7 @@ course_id,student_name,comment_time,comment_quality,comment_content,comment_phot
                       </div>
                   </div><!-- ./ End  Blog Right Wrapper--><!-- ./ End  Blog Right Wrapper-->
            
-        </div></div>
+        </div>
     </section>
 
 
@@ -413,39 +374,39 @@ course_id,student_name,comment_time,comment_quality,comment_content,comment_phot
 						<ul class="recent-post">
 							<li>
 								<a href="course5.php">
-									<div class="post-thum">
+									<span class="post-thum">
 										<img src="https://edu-image.nosdn.127.net/8282FBC079673EA3A28339617E2F69E5.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" alt="" class="img-rounded"style="width: 200px;height: 120px;">
-									</div>
-									<div class="post-content">
-										<p>课程名 :</p><br><p>身边的材料学 </p>
-                                       <br><p>课程ID：20182018155</p>
+									</span>
+									<span class="post-content">
+										<label>课程名 :</label><br><label>身边的材料学 </label>
+                                       <br><label>课程ID：20182018155</label>
 										
 										
-									</div>
+									</span>
 								</a>
 							</li>
 							<li>
 								<a href="course3.php">
-									<div class="post-thum">
+									<span class="post-thum">
 										<img src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-rounded"style="width: 200px;height: 120px;">
-									</div>
-									<div class="post-content">
-										<p>课程名 :</p><br><p>信息安全概论 </p>
-                                        <br><p>课程ID：20182047080</p>
+									</span>>
+									<span class="post-content">
+										<label>课程名 :</label><br><label>信息安全概论 </label>
+                                        <br><label>课程ID：20182047080</label>
 										
-									</div>
+									</span>
 								</a>
 							</li>
 							<li>
 								<a href="course1.php">
-									<div class="post-thum">
+									<span class="post-thum">
 										<img src="https://edu-image.nosdn.127.net/4A5DADAAACFEEFE79DFF9C19E626C659.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-rounded"style="width: 200px;height: 120px;">
-									</div>
-									<div class="post-content">
-										<p>课程名 :</p><br><p>C语言程序设计 </p>
-                                        <br><p>课程ID：20182047086</p>
+									</span>
+									<span class="post-content">
+										<label>课程名 :</label><br><label>C语言程序设计 </label>
+                                        <br><label>课程ID：20182047086</label>
 										
-									</div>
+									</span>
 								</a>
 							</li>
 						</ul>
