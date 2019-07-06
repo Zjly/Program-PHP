@@ -1,3 +1,3 @@
 <?php
-exec("python E:\Coding\Python\Code_Python3\practical_training\connect_php\\verification_code.py ",$out,$res);
+exec("python E:\Coding\Python\Program\practical_training\connect_phps\\verification_code.py ",$out,$res);
 print($out[0]);
