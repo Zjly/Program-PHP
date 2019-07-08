@@ -3,6 +3,13 @@
 include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
+if(!empty($_POST['cname'])){
+	$a = $_POST['cname'];
+	$c = exec("python E:/PHP/htdocs/test/admin/python/model_predict.py {$a}",$out,$res);//调用python包
+	$d = $out[1];
+	echo json_encode(array("type"=>$d),JSON_UNESCAPED_UNICODE);
+	exit();
+}
 
 if(isset($_POST['submit'])){
 	$link=connect();
@@ -58,14 +65,14 @@ $template['css']=array('style/public.css','style/father_module_add.css');
 				<td>
 					课程名字
 				</td>
-				<td><input name="course_name"  type="text" /></td>
+				<td><input id = "course_name" name="course_name"  type="text" /></td>
 				<td>必填</td>
 			</tr>
 			<tr>
 				<td>
 					课程类型
 				</td>
-				<td><input name="course_type"  type="text" /></td>
+				<td><input id = "course_type" name="course_type"  type="text" /></td>
 				<td>
 					可空
 				</td>
@@ -97,5 +104,37 @@ $template['css']=array('style/public.css','style/father_module_add.css');
 			
 		</table>
 		<input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="submit" value="添加" />
+		<input style="margin-top:20px;cursor:pointer;" class="btn" type="button" name="button" onclick="addType()"  value="一键判断类型" />
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript">
+		function addType(){
+			var course_name=document.getElementById("course_name").value;
+			var course_type=document.getElementById("course_type");
+			if(course_name ==""){
+				alert("请输入课程名！");
+				return;
+			}
+			$.ajax({
+			url:location.href,
+			data:{"cname":course_name},
+			type:"POST",
+			dataType:"json",
+			success:function(data){
+				console.log(typeof data);
+				console.log(data);
+				if(data.type!=""){
+				course_type.value=data.type;
+				}else{
+					alert("判断类型为空");
+				}
+			},
+			error:function(data){
+				console.log(typeof data);
+				console.log(data);
+				alert("判定失败");
+			}
+			});
+		}
+		</script>
 	</form>
 </div>

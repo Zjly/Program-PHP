@@ -16,32 +16,13 @@ $member_id=is_login($link);
 
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title></title>
-<link rel="stylesheet" href="js1/jsmodern.min.css">
-<script src="js1/jquery.min.js"></script>
-<script src="js1/jsmodern.min.js"></script>
-<script>
-	$(function () {
-		jsModern.video("#video");
-	})
-</script>
-
-
-</head>
 
 <body>
-     <label></label>
-     <br><label></label>
+     
 
-	<div id="video" style="width:1000px;height:600px;margin:10px auto;">
-		<video src="js1/video.mp4"></video>
-	</div>
+	
 
 
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -97,57 +78,65 @@ body{background-color: #222}
 </style>
     </head><body>
 
-   <header><div class="main_nav">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2 col-sm-2 col-xs-12 tap-v-responsive">
-					<div class="logo-area">
-						<a href="index.php"><img src="images/logo.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="col-md-10">
-					<nav>
-						<ul class="main-menu text-right">
-							<li class="active"><a href="index.php">首页</a>
-							</li>
-							<li><a href="course.php">课程资源</a>
-								<ul class="dropdown">
-									<li><a href="package-version-one.html">计算机类</a></li>
-									<li><a href="package-version-two.html">文学类 </a></li>
-									<li><a href="single-package.html">通识类</a></li>
-								</ul>
-							</li>
-							<li><a href="viedo.php">课程评论</a>
-								<ul class="dropdown">
-									<li><a href="hotel-version-one.html">计算机类</a></li>
-									<li><a href="hotel-version-two.html">文学类</a></li>
-									<li><a href="hotel-details.html">通识类</a></li>
-								</ul>
-							</li>
-							<li><a href="person.php">个人信息</a></li>
-							<li><a href="ourteam.php">关于我们</a></li>
-						</ul>
-					</nav>
-				</div> <!-- main menu end here -->
-			</div>
-		</div>
-	</div> <!-- header-bottom area end here --></header>
-	<section class="breadcrumb-blog-version-one">
+   <header>
+    <div class="main_nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-2 col-xs-12 tap-v-responsive">
+                    <div class="logo-area">
+                        <a href="index.php"><img src="images/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <nav>
+                        <ul class="main-menu text-right">
+                            <li class="active"><a href="index.php">首页</a>
+                            </li>
+                            <li><a href="course.php">课程资源</a>
+                                <ul class="dropdown">
+                                    <li><a href="">计算机类</a></li>
+                                    <li><a href="">文学类</a></li>
+                                    <li><a href="">通识类</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="pinglun.php">课程评论</a>
+                                <ul class="dropdown">
+                                    <li><a href="">计算机类</a></li>
+                                    <li><a href="">文学类</a></li>
+                                    <li><a href="">通识类</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li><a href="person.php">个人信息</a>
+                               
+                            </li>
+                            <li><a href="ourteam.php">关于我们</a>
+                            </li>                           
+                        </ul>
+                    </nav>
+                </div> <!-- main menu end here -->
+            </div>
+        </div>
+    </div> <!-- header-bottom area end here -->
+</header> <!-- header area end here -->
+
+    <!-- blog breadcrumb version one strat here -->
+    <section class="breadcrumb-blog-version-one">
         <div class="single-bredcurms">
-         <div id="Layer1" style="position: absolute ; left:0px; top:0px;width:100%; height:130%; z-index:-1">
-			 <img src="http://img.1ppt.com/uploads/allimg/1812/1_181225152355_1.jpg"  style=" width:100%;height:450px;">
+         <div id="Layer1" style="position: absolute ; left:0px; top:0px;width:100%; height:130%; z-index:-1">    
+			  <img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/bg_4.jpg"  style=" width:100%;height:480px;">  
 			 </div>
            <div class="container">
                <div class="row">
                     <div class="col-sm-12">
                         <div class="bredcrums-content">
                             <h2>代码全写队</h2>
-
+                            
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </div>
     </section><!-- blog breadcrumb version one end here -->
     <div class="row"style="margin-top: 20px;">
@@ -160,54 +149,54 @@ body{background-color: #222}
 		</div>
 <div class="video">
 	<div class="container" style="margin-top: 10px;">
-		<div class="videolist" vpath="v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">
+		<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course2.jpg" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course2.mp4">
 
-			<img src="img/v1.jpg" width="220px" height="210px" />
+			<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course2.jpg" width="220px" height="210px" />
 			<div class="vtime">2018-06-22</div>
 			<img src="img/play.png" class="videoed">
 		</div>
-		<div class="videolist" vpath="v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">
+		<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course7.jpg" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course7.mp4">
 
-			<img src="img/v1.jpg" width="220px" height="210px" />
+			<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course7.jpg" width="220px" height="210px" />
 			<div class="vtime">2018-06-22</div>
 			<img src="img/play.png" class="videoed">
 		</div>
-		<div class="videolist" vpath="v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">
+		<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course8.png" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course8.mp4">
 
-			<img src="img/v1.jpg" width="220px" height="200px" />
+			<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course8.png" width="220px" height="200px" />
 			<div class="vtime">2018-06-22</div>
 			<img src="img/play.png" class="videoed">
 		</div>
-		<div class="videolist" vpath="v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">
+		<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course11.jpg" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course11.mp4">
 
-			<img src="img/v1.jpg" width="220px" height="200px" />
+			<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course11.jpg" width="220px" height="200px" />
 			<div class="vtime">2018-06-22</div>
 			<img src="img/play.png" class="videoed">
 		</div>
 		<div class="videos"></div>
 		</div>
 		<div class="container" style="margin-top: 30px">
-			<div class="videolist" vpath="v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">
+			<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course6.png" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course6.mp4">
 
-				<img src="img/v1.jpg" width="220px" height="200px" />
+				<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course6.png" width="220px" height="200px" />
 				<div class="vtime">2018-06-22</div>
 				<img src="img/play.png" class="videoed">
 			</div>
-			<div class="videolist" vpath="v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">
+			<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course10.jpg" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course10.mp4">
 
-				<img src="img/v1.jpg" width="220px" height="200px" />
+				<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course10.jpg" width="220px" height="200px" />
 				<div class="vtime">2018-06-22</div>
 				<img src="img/play.png" class="videoed">
 			</div>
-			<div class="videolist" vpath="v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">
+			<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course3.jpg" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course3.mp4">
 
-				<img src="img/v1.jpg" width="220px" height="200px" />
+				<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course3.jpg" width="220px" height="200px" />
 				<div class="vtime">2018-06-22</div>
 				<img src="img/play.png" class="videoed">
 			</div>
-			<div class="videolist" vpath="v1.jpg" ipath="https://blz-videos.nosdn.127.net/1/OverWatch/OVR-S03_E03_McCree_REUNION_zhCN_1080P_mb78.mp4">
+			<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course4.jpg" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course4.mp4">
 
-				<img src="img/v1.jpg" width="220px" height="200px" />
+				<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course4.jpg" width="220px" height="200px" />
 				<div class="vtime">2018-06-22</div>
 				<img src="img/play.png" class="videoed">
 			</div>

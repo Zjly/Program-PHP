@@ -89,6 +89,7 @@ A;
 						if($data == $_POST['content'] )  //若语义分析未识别到敏感词 ，进行情感分析
 						{
 							exec("python E:/PHP/htdocs/test/python/model_predict.py {$_POST['content']}", $out1, $res);
+
 							$quality = $out1[0];
 						}else{                   //若语义分析识别到敏感词   情感分析为bad
 							$quality = 'bad';

@@ -1,48 +1,17 @@
-var second = 0;
+function timer(){
 window.setInterval(function () {
-    second ++;
-}, 1000);
-var tjArr = localStorage.getItem("jsArr") ? localStorage.getItem("jsArr") : '[{}]';
-$.cookie('tjRefer', getReferrer() ,{expires:1,path:'/'});
-document.getElementById('result').innerHTML=localStorage.getItem("jsArr");
-window.onbeforeunload = function() {
-    if($.cookie('tjRefer') == ''){
-        var tjT = eval('(' + localStorage.getItem("jsArr") + ')');
-        if(tjT){
-            tjT[tjT.length-1].time += second;
-            var jsArr= JSON.stringify(tjT);
-            localStorage.setItem("jsArr", jsArr);
-        }
-    } else {
-        var tjArr = localStorage.getItem("jsArr") ? localStorage.getItem("jsArr") : '[{}]';
-        var dataArr = {
-            'url' : location.href,
-            'time' : second,
-            'refer' : getReferrer(),
-            'timeIn' : Date.parse(new Date()),
-            'timeOut' : Date.parse(new Date()) + (second * 1000)
-        };
-        tjArr = eval('(' + tjArr + ')');
-        tjArr.push(dataArr);
-        tjArr= JSON.stringify(tjArr);
-        localStorage.setItem("jsArr", tjArr);
-    }
-};
-function getReferrer() {
-    var referrer = '';
-    try {
-        referrer = window.top.document.referrer;
-    } catch(e) {
-        if(window.parent) {
-            try {
-                referrer = window.parent.document.referrer;
-            } catch(e2) {
-                referrer = '';
-            }
-        }
-    }
-    if(referrer === '') {
-        referrer = document.referrer;
-    }
-    return referrer;
+	var time_code = 1;
+	console.log("开始计时");
+    $.ajax({
+		url:location.href,
+		data:{"time_code":time_code},
+		type:"POST",
+	  success:function(data){
+		  console.log("传值成功");
+	  },
+	   error:function(){
+		  console.log("传值失败");
+	  }
+      });
+}, 5000);
 }

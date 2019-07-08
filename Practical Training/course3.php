@@ -2,7 +2,7 @@
 include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
-include_once 'inc/page.inc.php';
+include_once 'inc/page.inc2.php';
 $link=connect();
 $member_id=is_login($link);
 $template['css']=array('style/public.css');
@@ -18,74 +18,13 @@ $course_id='20182047080';
 <?php include_once 'inc/head.inc.php';
 // var_dump($_COOKIE['cookie']);?>
 
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <!-- Google Fonts Includes -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <!-- Favi icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-    <!-- bootstrap v3.3.6 css -->
-    <link rel="stylesheet" href="css2/assets/bootstrap.min.css">
-    <!-- animate css -->
-    <link rel="stylesheet" href="css2/assets/animate.css">
-    <!-- Button Hover animate css -->
-    <link rel="stylesheet" href="css2/assets/hover-min.css">
-    <!-- jquery-ui.min css -->
-    <link rel="stylesheet" href="css2/assets/jquery-ui.min.css">
-    <!-- meanmenu css -->
-    <link rel="stylesheet" href="css2/assets/meanmenu.min.css">
-    <!-- owl.carousel css -->
-    <link rel="stylesheet" href="css2/assets/owl.carousel.min.css">
-    <!-- slick css -->
-    <link rel="stylesheet" href="css2/assets/slick.css">
-    <!-- chosen.min-->
-    <link rel="stylesheet" href="css2/assets/jquery-customselect.css">
-    <!-- font-awesome css -->
-    <link rel="stylesheet" href="css2/assets/font-awesome.min.css">
-    <!-- magnific Css -->
-    <link rel="stylesheet" href="css2/assets/magnific-popup.css">
-    <!-- Revolution Slider -->
-    <link rel="stylesheet" href="css2/assets/revolution/layers.css">
-    <link rel="stylesheet" href="css2/assets/revolution/navigation.css">
-    <link rel="stylesheet" href="css2/assets/revolution/settings.css">
-    <!-- Preloader css -->
-    <link rel="stylesheet" href="css2/assets/preloader.css"> 
-    <!-- custome css -->
-    <link rel="stylesheet" href="css2/style.css">
-    <!-- responsive css -->
-    <link rel="stylesheet" href="css2/responsive.css">
-    <link rel="stylesheet" href="css2/master.css">
-	
-	
-	 <link rel="stylesheet" href="css2/nav.css">
-    <!-- modernizr css -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
- <!-- 视频 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <style type="text/css">
-body{background-color: #222}
-.videolist { position:relative; float:left; width:500px; height:300px; margin-right:50px; margin-top:15px; margin-bottom:30px; }
-.videolist:hover{ cursor: pointer; }
-.videoed { display:none; width:50px; height:50px; position: absolute; left:45%; top:45%; z-index:99; border-radius:100%; }
-.videos{ display:none; border: 1px solid #080808; position:fixed; left:50%; top:50%; margin-left:-320px; margin-top:-210px; z-index:100; width:640px; height:360px; }
-.vclose { position:absolute;right:1%; top:1%; border-radius:100%; cursor: pointer; }
-</style>
-    
-</head>
+<?php include_once 'index.inc/index4.inc.php';?>
 <div id="loader-wrapper">
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
-<body>
+<body onload = "timer()">
 <!-- header area start here -->
 <header>
     <div class="main_nav">
@@ -103,13 +42,9 @@ body{background-color: #222}
                             <li class="active"><a href="index.php">首页</a>
                             </li>
                             <li><a href="course.php">课程资源</a>
-                                <ul class="dropdown">
-                                    <li><a href="">计算机类</a></li>
-                                    <li><a href="">文学类</a></li>
-                                    <li><a href="">通识类</a></li>
-                                </ul>
+                               
                             </li>
-                            <li><a href="pinglun.php">课程评论</a>
+                            <li><a href="kecheng.php">课程分类</a>
                                 <ul class="dropdown">
                                     <li><a href="">计算机类</a></li>
                                     <li><a href="">文学类</a></li>
@@ -134,7 +69,7 @@ body{background-color: #222}
     <section class="breadcrumb-blog-version-one">
         <div class="single-bredcurms">
          <div id="Layer1" style="position: absolute ; left:0px; top:0px;width:100%; height:130%; z-index:-1">    
-			 <img src="http://img.1ppt.com/uploads/allimg/1812/1_181225152355_1.jpg"  style=" width:100%;height:450px;">    
+			  <img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/bg_4.jpg"  style=" width:100%;height:480px;">     
 			 </div>
            <div class="container">
                <div class="row">
@@ -157,9 +92,9 @@ body{background-color: #222}
 
 <div class="video">
 	<div class="container" >
-		<div class="videolist" vpath="v1.jpg" ipath="ckin.mp4">
+		<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course3.jpg" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course3.mp4">
 			
-			<img src="img/v1.jpg" width="540px" height="300px" />
+			<img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course3.jpg" width="540px" height="300px" />
 			<div class="vtime">2018-06-22</div>
 			<img src="img/play.png" class="videoed">
 		</div>
@@ -230,81 +165,87 @@ function close1(){
                           </div>
                   
                   
-                          <div class="recent_post_wrapper widget_single">
-                              <div class="items-title">
-                                  <h3 class="title">相关课程</h3>
-                              </div>
-                              <div class="single-post">
-                                  <div class="recent_img">
-                                       <a href="course8.php" title=""><img src="https://edu-image.nosdn.127.net/E8448DD7703A745D89CB7FCC48AE6E9B.png?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-fluid"></a>
-                                  </div>
-                                  <div class="post_title">
-                                      <a href="course8.php" title="">自然计算方法导论</a>
-                                      <div class="post-date">
-                                          <span>May 29, 2019</span>
-                                      </div>
-                                  </div>
-                              </div>
-                  
-                              <div class="single-post">
-                                  <div class="recent_img">
-                                      <a href="course3.php" title=""><img src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-fluid"></a>
-                                  </div>
-                                  <div class="post_title">
-                                      <a href="course3.php" title="">信息安全概论</a>
-                                      <div class="post-date">
-                                          <span>25 August, 2019</span>
-                                      </div>
-                                  </div>
-                              </div>
-                  
-                              <div class="single-post">
-                                  <div class="recent_img">
-                                      <a href="course2.php" title=""><img src="https://edu-image.nosdn.127.net/76F0C19078017F0FA44FFBA7A6B83E9B.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" alt="" class="img-fluid"></a>
-                                  </div>
-                                  <div class="post_title">
-                                      <a href="course2.php" title="">物联网应用及安全</a>
-                                      <div class="post-date">
-                                          <span>25 August, 2019</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                  
-                           <div class="recent_post_wrapper widget_single">
-                              <div class="items-title">
-                                  <h3 class="title">课程老师</h3>
-                              </div>
-                              <div class="single-post">
-                                  <div class="recent_img">
-                                       <a href="" title=""><img src="images/blog/f4.jpg" alt="" class="img-fluid"></a>
-                                  </div>
-                                  <div class="post_title">
-                                      <a href="" title="">刘华骏</a>
-                                     
-                                  </div>
-                              </div>
-                                            
-                              <div class="single-post">
-                                  <div class="recent_img">
-                                      <a href="" title=""><img src="images/blog/f5.jpg" alt="" class="img-fluid"></a>
-                                  </div>
-                                  <div class="post_title">
-                                      <a href="" title="">徐晓辉</a>
-                                      
-                                  </div>
-                              </div>
-                                            
-                              <div class="single-post">
-                                  <div class="recent_img">
-                                      <a href="" title=""><img src="images/blog/f6.jpg" alt="" class="img-fluid"></a>
-                                  </div>
-                                  <div class="post_title">
-                                      <a href="" title="">黄爽</a>
-                                     
-                                  </div>
-                              </div>
-                          </div>
+                        <div class="recent_post_wrapper widget_single">
+					<div style="width:350px;height:450px;background:white;position:relative;left:0px;top:10px;border-radius:10px">
+						<div class="items-title" style ="margin-left:20px">
+							<h3 class="title">相关课程</h3>
+							<hr>
+						</div>
+					<div class="single-post" style ="margin-left:20px">
+						<div class="recent_img">
+						   <a href="course8.php" title=""><img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course8.png" alt="" class="img-fluid"></a>
+						</div>
+						<div class="post_title">
+							<a href="course8.php" title="">自然计算方法导论</a>
+							<div class="post-date">
+							   <span>May 29, 2019</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="single-post" style ="margin-left:20px">
+						<div class="recent_img">
+						  <a href="course3.php" title=""><img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course3.jpg" alt="" class="img-fluid"></a>
+						</div>
+						<div class="post_title">
+							<a href="course3.php" title="">信息安全概论</a>
+							<div class="post-date">
+							  <span>25 August, 2019</span>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="single-post" style ="margin-left:20px">
+						<div class="recent_img">
+						   <a href="course2.php" title=""><img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course2.jpg" alt="" class="img-fluid"></a>
+						</div>
+						<div class="post_title">
+							<a href="course2.php" title="">物联网应用及安全</a>
+							<div class="post-date">
+							   <span>25 August, 2019</span>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="recent_post_wrapper widget_single">
+					<div style="width:350px;height:500px;background:white;position:relative;left:0px;top:10px;border-radius:10px">
+						<div class="items-title" style ="margin-left:20px">
+						  <h3 class="title">课程老师</h3>
+						</div>
+						<div class="single-post" style ="margin-left:20px">
+							<div class="recent_img">
+								<a href="" title=""><img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/%E5%A4%B4%E5%83%8F2.jpg" alt="" class="img-fluid"></a>
+							</div>
+							<div class="post_title">
+								<a href="" title="">刘华骏</a>
+							 
+							</div>
+						</div>
+									
+						<div class="single-post" style ="margin-left:20px">
+							<div class="recent_img">
+								<a href="" title=""><img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/%E5%A4%B4%E5%83%8F4.jpg" alt="" class="img-fluid"></a>
+							</div>
+							<div class="post_title">
+								<a href="" title="">徐晓辉</a>
+							  
+							</div>
+						</div>
+									
+						<div class="single-post" style ="margin-left:20px">
+							<div class="recent_img">
+								<a href="" title=""><img src="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/%E5%A4%B4%E5%83%8F6.jpg" alt="" class="img-fluid"></a>
+							</div>
+							<div class="post_title">
+								<a href="" title="">黄爽</a>
+							 
+							</div>
+						</div>
+					</div>
+				</div>
 						  
 						   
                   
@@ -359,8 +300,8 @@ function close1(){
 					<ul class="list-unstyled">
 						<li><a href="index.php" title="">首页</a></li>
 						<li><a href="course.php" title="">课程资源</a></li>
-						<li><a href="" title="">课程评论</a></li>
-						<li><a href="" title="">课程评分</a></li>
+						<li><a href="kecheng.php" title="">课程分类</a></li>
+						
 						<li><a href="person.php" title="">个人信息</a></li>
 						<li><a href="ourteam.php" title="">关于我们</a></li>
 						
@@ -392,7 +333,7 @@ function close1(){
 								<a href="course3.php">
 									<span class="post-thum">
 										<img src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="" class="img-rounded"style="width: 200px;height: 120px;">
-									</span>>
+									</span>
 									<span class="post-content">
 										<label>课程名 :</label><br><label>信息安全概论 </label>
                                         <br><label>课程ID：20182047080</label>
@@ -416,6 +357,7 @@ function close1(){
 					</div>
 				</div>
 			</div>	<!-- footer latest news -->
+
 			<!-- footer contact -->
 			<div class="col-12 col-sm-6 col-md-6 col-lg-3 f-phone-responsive">
 				<div class="single-footer">
@@ -443,11 +385,11 @@ function close1(){
 							<h3>Follow Us</h3>
 						</div>
 						<ul class="footer-social-link">
-							<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li class="gplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+							<li class="facebook"><a href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+							<li class="twitter"><a href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+							<li class="linkedin"><a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+							<li class="gplus"><a href="https://www.cnbeta.com"><i class="fa fa-google-plus"></i></a></li>
+							<li class="youtube"><a href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -499,47 +441,7 @@ pics: ''
     <a href="#"><i class = "fa fa-angle-up"></i></a>
 </div><!-- Scroll to top-->
 
-    <!-- ============================
-            JavaScript Files
-    ============================= -->
-
-    <!-- jquery latest version -->
-    <script src="js/vendor/jquery-3.2.0.min.js"></script>
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>  
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- owl.carousel js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- slick js -->
-    <script src="js/slick.min.js"></script>
-    <!-- meanmenu js -->
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <!-- jquery-ui js -->
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- wow js -->
-    <script src="js/wow.min.js"></script>
-    <!-- counter js -->
-    <script src="js/jquery.counterup.min.js"></script>
-    <!-- Countdown js -->
-    <script src="js/jquery.countdown.min.js"></script>
-    <!-- waypoints js -->
-    <script src="js/jquery.waypoints.min.js"></script>
-    <!-- Isotope js -->
-    <script src="js/isotope.pkgd.min.js"></script>
-    <!-- magnific js -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <!-- Image loaded js -->
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <!-- chossen js -->
-    <script src="js/chosen.jquery.min.js"></script>
-    <!-- Jquery plugin -->
-    <script src="js/plugins.js"></script>
-    <!-- select2 js plugin -->
-    <script src="js/select2.min.js"></script>    
-    <script src="js/colors.js"></script>
-    <!-- Jquery plugin -->
-    <script src="js/jquery-customselect.js"></script>
-    <!-- main js -->
-    <script src="js/custom.js"></script>
+   <?php include_once 'index.inc/index5.inc.php';?>
+   
 </body>
 </html>

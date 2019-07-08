@@ -29,8 +29,9 @@ execute($link,$query);
 if(@$_COOKIE['cookie']['name']!=NULL){
     $query="select * from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
     $result=execute($link,$query);
-    $student_course=mysqli_fetch_array($result);}
-    if(isset($_POST['xuanke'])){
+    $student_course=mysqli_fetch_array($result);
+	}
+if(isset($_POST['xuanke'])){
         if(@$_COOKIE['cookie']['name']==NULL){skip($adress,'error','请登陆后再选课');
         }
         $query="select * from CM_student_course where student_number='{$student_course['student_number']}' and cID='{$course['cID']}'";
@@ -42,5 +43,39 @@ if(@$_COOKIE['cookie']['name']!=NULL){
             execute($link,$query);
         }
          
-    }?>
+    }
+
+if(empty($_POST['time_code'])){
+}else{
+	if(@$_COOKIE['cookie']['name']==NULL){skip($adress,'error','请登陆后再选课');
+        }
+       @$query="select student_number from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
+       $result=execute($link,$query);
+       $student_number=mysqli_fetch_array($result);
+       date_default_timezone_set('PRC');
+       $day=date('ymd', time());
+       
+        if($_POST['time_code']=='1'){
+			
+		$query="select * from CM_study_history where course_id='{$course_id}'and student_number='{$student_number['student_number']}'and day='{$day}'";
+		$result=execute($link,$query);
+		if(mysqli_num_rows($result)==0){
+	    $query="insert into CM_study_history(course_id,student_number,day) values('{$course_id}','{$student_number['student_number']}','{$day}')";
+		execute($link, $query);
+		}
+        $query="update CM_study_history set time=time+5 where course_id='{$course_id}'";
+        $result=execute($link,$query);
+      //  var_dump(mysqli_affected_rows($link));
+      /*  $query1="select * from CM_study_history  ";
+		$result1=execute($link,$query1);
+		while($data=mysqli_fetch_array($result1))
+		{
+			echo $data['time'];
+		}
+		测试用*/
+        }
+    }
+
+
+?>
    
