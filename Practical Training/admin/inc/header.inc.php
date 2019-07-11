@@ -120,11 +120,13 @@ foreach ($template['css'] as $val){
                         <dl class="child">
                             <dd><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='user_module_add.php'){echo 'class="current"';}?> href="user_module_add.php">学生信息管理 </a></dd>
 							<dd><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='user_module.php'){echo 'class="current"';}?> href="user_module.php">学生信息修改</a></dd>
+			
 							<?php 
 				                if(basename($_SERVER['SCRIPT_NAME'])=='user_module_update.php'){
 					            echo '<li><a class="current">编辑学生信息</a></li>';
 				            }
 				            ?>
+				            <dd><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='student_content.php'){echo 'class="current"';}?> href="student_content.php">评论删除</a></dd>
                         </dl>
                         <a href=""></a>
                         <a href=""></a>

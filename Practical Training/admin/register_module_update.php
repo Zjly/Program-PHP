@@ -5,6 +5,10 @@ include_once '../inc/tool.inc.php';
 $template['title']='用户版块-修改';
 $template['css']=array('style/public.css');
 $link=connect();
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 	skip('register_module.php','error','id参数错误！');
 }
@@ -14,6 +18,9 @@ if(!mysqli_num_rows($result)){
 	skip('register_module.php','error','这条版块信息不存在！');
 }
 if(isset($_POST['submit'])){
+   $_POST=escape($link,$_POST);
+   $_POST=escape_js($_POST);
+   
 	//验证
 	$check_flag='update';
 	

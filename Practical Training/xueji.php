@@ -14,6 +14,8 @@ include_once 'inc/head.inc.php';
 
   
     if(isset($_POST['submit2'])){
+       $_POST= escape($link,$_POST);
+       $_POST= escape_js($_POST);
     if(empty($_COOKIE['cookie']['name'])){
     skip('login.php', 'error', '给我去登陆');
 }
@@ -189,6 +191,7 @@ include_once 'inc/head.inc.php';
                             </div>
                             	
                         </div>
+<br><br><br>
                     </form>
                            </div>
     	
@@ -301,6 +304,7 @@ include_once 'inc/head.inc.php';
                     </div>
                     	
                 </div>
+		
             </form>
             <div style=margin-left:200>
             <?/*php
@@ -315,6 +319,7 @@ include_once 'inc/head.inc.php';
     </div>
         </div>
     </div>
+
 </body>
 
 </head>

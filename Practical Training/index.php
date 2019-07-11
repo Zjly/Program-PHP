@@ -24,8 +24,6 @@ $member_id=is_login($link);
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大学生公共课程资源共享平台</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <!-- bootstrap css -->
@@ -130,7 +128,7 @@ $member_id=is_login($link);
 							<li><a href="course.php">课程资源</a>
 								
 							</li>
-							<li><a href="viedo1.php">课程评论</a>
+							
 								
 							</li>
 							<li><a href="person.php">个人信息</a></li>
@@ -391,20 +389,25 @@ $member_id=is_login($link);
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-md-12">
-				<div class="search_form">
+				<div class="search_form" style = "margin-top:-50">
 					<form action="#" method="post">
 						<div class="form-group keywork_type">
 							<label><i class="fa fa-map-marker"></i></label>
-							<input type="search" name="s" id="keyword2" class="hotel-input-first" placeholder="课程名称">
+							<!--<input type="search" name="s" id="keyword2" class="hotel-input-first" placeholder="课程名称">-->
+							<input type="search" name="s" class="hotel-input-first" id = "keyword2" placeholder="课程名称"onkeyup="showResult(this.value)" autocomplete="off">
+							<!--<button name="submit" type="submit" class="ydc-group-button">搜 索</NOtton>-->
 						</div>
+
 						
 						
 						<div class="form-group searc-btn-7">
-							<button type="submit">搜索</button>
+							<button type="submit">输入课程名</NOtton>
 						</div>
+						
 					</form>
+					<div id="livesearch" style="color:blue;overflow:auto;font-size:15;font-style:normal;margin-left:127;width:300px;height:50px;background:#ffffff;position:relative;left:0px;top:0px;border-radius:4px;box-shadow:0px 0px  5px 1px #aaa;"></div>
 				</div>
-			</div>
+			</div>			</div>
 		</div>
 	</div>
 </section> <!-- header tab based search area end-->
@@ -440,7 +443,7 @@ $member_id=is_login($link);
 					</div>
 				</div>
 				<div class="buy-now text-center">
-					<a href="class1.php" class="travel-primary-btn hvr-fade">课程资源</a>
+					<a href="xuanze.php" class="travel-primary-btn hvr-fade">课程资源</a>
 				</div>
 			</div>
 		</div>
@@ -748,7 +751,7 @@ $member_id=is_login($link);
 					<figure>
 						<img src="https://edu-image.nosdn.127.net/4A5DADAAACFEEFE79DFF9C19E626C659.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" style="width: 350px;height: 230px;">
 						<figcaption>
-							<a href="course1.php" title=""><i class="fa fa-eye"></i></a>
+							<a href="https://edu-image.nosdn.127.net/4A5DADAAACFEEFE79DFF9C19E626C659.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" title=""><i class="fa fa-eye"></i></a>
 							<h4>课程名<span>C语言程序设计</span></h4>
 							<h3>任课老师 <span>刘一</span></h3>
 						</figcaption>
@@ -761,7 +764,7 @@ $member_id=is_login($link);
 					<figure>
 						<img src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" style="width: 350px;height: 230px;">
 						<figcaption>
-							<a href="course3.php" title=""><i class="fa fa-eye"></i></a>
+							<a href="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" title=""><i class="fa fa-eye"></i></a>
 							<h4>课程名<span>信息安全概论</span></h4>
 							<h3>任课老师 <span>康卓</span></h3>
 						</figcaption>
@@ -774,7 +777,7 @@ $member_id=is_login($link);
 					<figure>
 						<img src="https://edu-image.nosdn.127.net/6CE1F9C631F5BA4EF0FADE575E526585.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" style="width: 350px;height: 230px;">
 						<figcaption>
-							<a href="course7.php" title=""><i class="fa fa-eye"></i></a>
+							<a href="https://edu-image.nosdn.127.net/6CE1F9C631F5BA4EF0FADE575E526585.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" title=""><i class="fa fa-eye"></i></a>
 							<h4>课程名<span>航天航空概论</span></h4>
 							<h3>任课老师 <span>周辉</span></h3>
 						</figcaption>
@@ -787,7 +790,7 @@ $member_id=is_login($link);
 					<figure>
 						<img src="https://edu-image.nosdn.127.net/8282FBC079673EA3A28339617E2F69E5.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" style="width: 350px;height: 230px;">
 						<figcaption>
-							<a href="course5.php" title=""><i class="fa fa-eye"></i></a>
+							<a href="https://edu-image.nosdn.127.net/8282FBC079673EA3A28339617E2F69E5.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" title=""><i class="fa fa-eye"></i></a>
 							<h4>课程名<span>身边的材料学</span></h4>
 							<h3>任课老师 <span>肖文凯</span></h3>
 						</figcaption>
@@ -800,7 +803,7 @@ $member_id=is_login($link);
 					<figure>
 						<img src="https://edu-image.nosdn.127.net/045818517FBF0D5F6C2B3696FD36A114.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" style="width: 350px;height: 230px;">
 						<figcaption>
-							<a href="course11.php" title=""><i class="fa fa-eye"></i></a>
+							<a href="https://edu-image.nosdn.127.net/045818517FBF0D5F6C2B3696FD36A114.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" title=""><i class="fa fa-eye"></i></a>
 							<h4>课程名<span>哲学导论</span></h4>
 							<h3>任课老师 <span>张云涛</span></h3>
 						</figcaption>
@@ -813,7 +816,7 @@ $member_id=is_login($link);
 					<figure>
 						<img src="https://edu-image.nosdn.127.net/288647B04DED46F53F2154ABF422099B.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" style="width: 350px;height: 230px;">
 						<figcaption>
-							<a href="course9.php" title=""><i class="fa fa-eye"></i></a>
+							<a href="https://edu-image.nosdn.127.net/288647B04DED46F53F2154ABF422099B.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100"style="width: 3000px;height: 2300px;" title=""><i class="fa fa-eye"></i></a>
 							<h4>课程名<span>宇宙新概念</span></h4>
 							<h3>任课老师 <span>赵江南</span></h3>
 						</figcaption>
@@ -831,45 +834,14 @@ $member_id=is_login($link);
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="section-title text-center">
-					<h2>合作平台</h2>
+					<h2>特别鸣谢姜立玮同学对我门的无偿帮助</h2>
 					 
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<!-- partners images -->
-			<div class="partner-slider-active owl-carousel">
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/1.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/2.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/3.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/4.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/5.png" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 		<!-- partners images -->
 		
@@ -891,7 +863,7 @@ $member_id=is_login($link);
 							<p>代码全写队 </p> <p>产品经理：彭英杰 项目经理：张雷 </p><p>技术经理：马赞 </p><p>成员：汪志豪   余冠达</p>
 						</div>
 						<ul class="footer-contact">
-							<li><img class="map" src="images/icon/map.png" alt="">武汉大学</li>
+							
 							<li><img class="map" src="images/icon/phone.png" alt="">+123-456-7890</li>
 							<li><img class="map" src="images/icon/gmail.png" alt="">123456789@qq.com</li>
 						</ul>
@@ -908,8 +880,7 @@ $member_id=is_login($link);
 					<ul class="list-unstyled">
 						<li><a href="index.php" title="">首页</a></li>
 						<li><a href="course.php" title="">课程资源</a></li>
-						<li><a href="" title="">课程评论</a></li>
-						<li><a href="" title="">课程评分</a></li>
+						
 						<li><a href="person.php" title="">个人信息</a></li>
 						<li><a href="ourteam.php" title="">关于我们</a></li>
 						
@@ -995,8 +966,8 @@ $member_id=is_login($link);
 						<ul class="footer-social-link">
 							<li class="facebook"><a href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
 							<li class="twitter"><a href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
-							<li class="linkedin"><a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
-							<li class="gplus"><a href="https://www.cnbeta.com"><i class="fa fa-google-plus"></i></a></li>
+							
+							
 							<li class="youtube"><a href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>
 						</ul>
 					</div>
@@ -1010,15 +981,7 @@ $member_id=is_login($link);
 				<div class="col-12 col-sm-12 col-md-12">
 					<div class="copy_right_wrapper">
 						<div><p>©2019 代码全写队</p></div>
-						<ul class="payicon pull-right">
-							<li>We Accept : </li>
-							<li><a href="" title=""><img src="images/payicon01.png" alt=""></a></li>
-							<li><a href="" title=""><img src="images/payicon02.png" alt=""></a></li>
-							<li><a href="" title=""><img src="images/payicon03.png" alt=""></a></li>
-							<li><a href="" title=""><img src="images/payicon04.png" alt=""></a></li>
-							<li><a href="" title=""><img src="images/payicon05.png" alt=""></a></li>
-							<li><a href="" title=""><img src="images/payicon06.png" alt=""></a></li>
-						</ul>
+						
 					</div>
 				</div>
 			</div>
@@ -1075,6 +1038,59 @@ $member_id=is_login($link);
     <script src="js/assets/revolution/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="js/assets/revolution/extensions/revolution.extension.video.min.js"></script>
     <script src="js/assets/revolution/revolution.js"></script>
+	<script type="text/javascript">
+	    $(function(){
+			document.getElementById("livesearch").style.visibility="hidden";
+			var bool = 1;
+			while(bool == 1){
+				if(document.getElementById("seache").value != ''){	
+				document.getElementById("livesearch").style.visibility="visible";
+				bool = 0;
+				}
+			}
+			
+			
+	        $('.ydc-tabPanel ul li').click(function(){
+	            $(this).addClass('hit').siblings().removeClass('hit');
+	            $('.ydc-panes>div:eq('+$(this).index()+')').show().siblings().hide();
+	        })
+	    })
+
+	    function showResult(str)
+	    {
+				 
+	        if (str.length==0)
+	        { 
+				
+	            document.getElementById("livesearch").innerHTML="";
+	            document.getElementById("livesearch").style.border="0px";
+				document.getElementById("livesearch").style.visibility="hidden";
+	            return;
+	        }
+			document.getElementById("livesearch").style.visibility="visible";
+	        if (window.XMLHttpRequest)
+	        {// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行
+	            xmlhttp=new XMLHttpRequest();
+	        }
+	        else
+	        {// IE6, IE5 浏览器执行
+	            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	        }
+	        xmlhttp.onreadystatechange=function()
+	        {
+	            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	            {
+	                document.getElementById("livesearch").innerHTML=xmlhttp.responseText;
+	                document.getElementById("livesearch").style.border="1px solid #66aaff";
+	                document.getElementById("livesearch").style.borderTopWidth="1px";
+	            }
+	        }
+	        xmlhttp.open("GET","livesearch.php?q="+str,true);
+	        xmlhttp.send();
+	    }
+	  
+	</script>
+
     <!-- plugin js -->
     <script src="js/plugins.js"></script>
     <!-- select2 js -->

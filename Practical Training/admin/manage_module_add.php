@@ -7,8 +7,10 @@ if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 }
 $link=connect();
 
-
-
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 if(1){
     $query="select * from CM_register where rID={$_GET['id']}";
     $result=execute($link,$query);

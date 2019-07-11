@@ -30,9 +30,7 @@ $member_id=is_login($link);
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大学生公共课程资源共享平台</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <!-- Favicon -->
+      <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="css2/assets/bootstrap.min.css">
@@ -91,22 +89,12 @@ body{background-color: #222}
                 <div class="col-md-10">
                     <nav>
                         <ul class="main-menu text-right">
-                            <li class="active"><a href="index.php">首页</a>
+                            <li ><a href="index.php">首页</a>
                             </li>
-                            <li><a href="course.php">课程资源</a>
-                                <ul class="dropdown">
-                                    <li><a href="">计算机类</a></li>
-                                    <li><a href="">文学类</a></li>
-                                    <li><a href="">通识类</a></li>
-                                </ul>
+                            <li class="active"><a href="course.php">课程资源</a>
+                               
                             </li>
-                            <li><a href="pinglun.php">课程评论</a>
-                                <ul class="dropdown">
-                                    <li><a href="">计算机类</a></li>
-                                    <li><a href="">文学类</a></li>
-                                    <li><a href="">通识类</a></li>
-                                </ul>
-                            </li>
+                           
                             
                             <li><a href="person.php">个人信息</a>
                                
@@ -237,57 +225,6 @@ function close1(){
 }
 </script>
 
-<section class="our_partners">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="section-title text-center">
-					<h2>合作平台</h2>
-
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<!-- partners images -->
-			<div class="partner-slider-active owl-carousel">
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/1.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/2.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/3.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/4.png" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="single-pertner">
-					<div class="partner-image">
-						<a href="#"><img src="images/partner/5.png" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- partners images -->
-
-
-	</div>
-</section> <!--end partner section -->
-
 <footer class="footer-area">
 	<div class="container">
 		<div class="row">
@@ -302,7 +239,7 @@ function close1(){
 							<p>代码全写队 </p> <p>产品经理：彭英杰 项目经理：张雷 </p><p>技术经理：马赞 </p><p>成员：汪志豪   余冠达</p>
 						</div>
 						<ul class="footer-contact">
-							<li><img class="map" src="images/icon/map.png" alt="">武汉大学</li>
+							
 							<li><img class="map" src="images/icon/phone.png" alt="">+123-456-7890</li>
 							<li><img class="map" src="images/icon/gmail.png" alt="">123456789@qq.com</li>
 						</ul>

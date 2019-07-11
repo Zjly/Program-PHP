@@ -2,10 +2,17 @@
 include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
+$link=connect();
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 if(isset($_POST['submit'])){
-	$link=connect();
+
 	
 	$check_flag='add';
+	$_POST=escape($link,$_POST);
+	$_POST=escape_js($_POST);
 if(empty($_POST['student_name'])||empty($_POST['student_number'])||empty($_POST['student_college'])||empty($_POST['student_school'])||empty($_POST['student_sex'])||empty($_POST['register_name'])){
 	skip('user_module_add.php','error','请输入必填信息');
 }

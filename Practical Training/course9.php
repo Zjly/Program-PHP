@@ -9,7 +9,7 @@ $template['css']=array('style/public.css');
 foreach ($template['css'] as $val){
     echo "<link rel='stylesheet' type='text/css' href='{$val}' />";
 }
-$course_id='20182023104';
+$course_id='20182022190';
 $adress='course9.php ';
 
 include_once 'index.inc/index1.inc.php';
@@ -44,13 +44,7 @@ include_once 'index.inc/index1.inc.php';
                             <li><a href="course.php">课程资源</a>
                                 
                             </li>
-                            <li><a href="kecheng.php">课程分类</a>
-                                <ul class="dropdown">
-                                    <li><a href="">计算机类</a></li>
-                                    <li><a href="">文学类</a></li>
-                                    <li><a href="">通识类</a></li>
-                                </ul>
-                            </li>
+                            
                             <li><a href="person.php">个人信息</a>
                                
                             </li>
@@ -87,7 +81,7 @@ include_once 'index.inc/index1.inc.php';
 <div class="col-md-8 col-sm-12 col-xs-12">
 <!-- Single blog -->
 <div class="single-blog">
-
+<div style="width:730px;height:1350px;background:white;position:relative;left:0px;top:20px;border-radius:10px">
 <div class="video">
 	<div class="container" >
 		<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course9.jpg" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course9.mp4">
@@ -125,7 +119,7 @@ function close1(){
 	$('.videos').html();
 }
 </script>
-						<div class="blog-content" style="margin-left:20px;margin-right:30px">
+						<div class="blog-content" style="margin-left:20px;margin-right:20px">
 						<!-- Start blog -->
 
 						<?php include_once 'index.inc/index2.inc.php';?>
@@ -150,6 +144,7 @@ function close1(){
 
 						
 					</div>
+				</div>
 				</div><!--/ End Single blog -->
 
 				<!-- Blog Comment Wrappper-->
@@ -162,20 +157,17 @@ function close1(){
 		<div class="col-12 col-sm-12 col-md-4 col-lg-4 blog_wrapper_right ">
 			<div class="blog-right-items">
 
-				<div class="search_blog widget_single">
-					<div class="form-full-box">
-						<form>
-							<div class="form-group">
-								<input class="form-control" name="name" placeholder="课程名称"  type="text">
-								<button class="register-btn" type="submit"><i class="fa fa-search"></i></button>
-							</div>
-						</form>
-					</div>
-				</div>
+				<div style="margin-top:20;border:solid 2px #ffffff;border-radius:10px ">
+                              
+                                  
+					<img src="images/whulogo.jpg" >
+                                   
+                              
+                          </div>
 
 
 				<div class="recent_post_wrapper widget_single">
-					<div style="width:350px;height:450px;background:white;position:relative;left:0px;top:10px;border-radius:10px">
+					<div style="width:350px;height:450px;background:white;position:relative;left:0px;top:55px;border-radius:10px">
 						<div class="items-title" style ="margin-left:20px">
 							<h3 class="title">相关课程</h3>
 							<hr>
@@ -220,7 +212,7 @@ function close1(){
 				</div>
 
 				<div class="recent_post_wrapper widget_single">
-					<div style="width:350px;height:500px;background:white;position:relative;left:0px;top:10px;border-radius:10px">
+					<div style="width:350px;height:500px;background:white;position:relative;left:0px;top:55px;border-radius:10px">
 						<div class="items-title" style ="margin-left:20px">
 						  <h3 class="title">课程老师</h3>
 						</div>
@@ -259,7 +251,7 @@ function close1(){
 
 
 				<div class="popular_tags widget_single">
-					<div style="width:350px;height:200px;background:white;position:relative;left:0px;top:10px;border-radius:10px">
+					<div style="width:350px;height:200px;background:white;position:relative;left:0px;top:55px;border-radius:10px">
 						<div class="items-title" style ="margin-left:20px">
 							<h3 class="title">课程类型</h3>
 						</div>
@@ -293,7 +285,7 @@ function close1(){
 							<p>代码全写队 </p> <p>产品经理：彭英杰 项目经理：张雷 </p><p>技术经理：马赞 </p><p>成员：汪志豪   余冠达</p>
 						</div>
 						<ul class="footer-contact">
-							<li><img class="map" src="images/icon/map.png" alt="">武汉大学</li>
+							
 							<li><img class="map" src="images/icon/phone.png" alt="">+123-456-7890</li>
 							<li><img class="map" src="images/icon/gmail.png" alt="">123456789@qq.com</li>
 						</ul>

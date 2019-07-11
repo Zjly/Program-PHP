@@ -3,6 +3,10 @@ include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
 $link=connect();
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 $template['title']='课程板块';
 $template['css']=array('style/public.css');
 ?>
@@ -32,6 +36,7 @@ $template['css']=array('style/public.css');
 		</tr>
 		<?php 
 		if(isset($_POST['submit2'])){
+		    $_POST=escape($link,$_POST);
 		    $S=$_POST['search'];
 		    $query="select * from CM_course where course_name like '%{$_POST['search']}%' or course_type like  '%{$_POST['search']}%'or course_college like  '%{$_POST['search']}%'";
 		    $result=execute($link,$query);

@@ -70,8 +70,18 @@ function escape($link,$data){
 	return $data;
 	//mysqli_real_escape_string($link,$data);
 }
-
-
+function escape_js($data){
+    if(is_string($data)){
+        return htmlspecialchars(addslashes($data));
+    }
+    if(is_array($data)){
+        foreach ($data as $key=>$val){
+            $data[$key]=escape_js($val);
+        }
+    }
+    return $data;
+    //mysqli_real_escape_string($link,$data);
+}
 //关闭与数据库的连接
 function close($link){
 	mysqli_close($link);

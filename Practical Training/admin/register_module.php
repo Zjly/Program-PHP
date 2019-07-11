@@ -5,7 +5,10 @@ include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
 $link=connect();
-
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 $template['title']='用户版块列表';
 $template['css']=array('style/public.css');
 if(empty($_COOKIE['cookie']['name'])){
@@ -48,6 +51,7 @@ if(empty($_COOKIE['cookie']['name'])){
 			?>
 		</tr>
 		<?php if(isset($_POST['submit2'])){
+		    $_POST=escape($link,$_POST);
 		    $S=$_POST['search'];
 		$query="select * from CM_register where register_name like '%{$_POST['search']}%'";
 		$result=execute($link,$query);

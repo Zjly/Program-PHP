@@ -22,7 +22,7 @@
 							<div class="myapp-tip">
 								<span id="score" class="lq-score-tip"></span>
 							
-							<h1 style ="color:#ff8c58;font-size:45px;margin-left:15px"><?php echo $course['course_score']?>分</h1>
+							<h1 style ="color:#ff8c58;font-size:45px;margin-left:15px"><?php echo round($course['course_score'],1)?>分</h1>
 							
 							
 							</div>
@@ -40,7 +40,7 @@ A;
 								echo $html;
 									}}else {?>
 								<?php }?>
-							<div><label style="margin-left: 0px;color:#ff8c58;margin-top:-32px"><h3>(已有58人打分)</h3></label></div>
+							<div><label style="margin-left: 0px;color:#ff8c58;margin-top:-32px"><h3>(已有<?php echo $count_personnum?>人打分)</h3></label></div>
 						</div>
 					</div>
 					<br><br>		
@@ -83,24 +83,28 @@ A;
 					if(isset($_POST['submit'])){
 						date_default_timezone_set('PRC');
 						$time=date('20y年m月d日  h:i:sa', time());
-						echo $time;
-                        exec("python E:/PHP/htdocs/test/python/sensitive_words_analysis.py {$_POST['content']}", $out, $res);
-                        $data = $out[0];
-						if($data == $_POST['content'] )  //若语义分析未识别到敏感词 ，进行情感分析
+						$set_charset = 'export LANG=en_US.UTF-8;';
+						$str =  str_replace(" ", "，", $_POST['content']);
+   						 $cmd = "/usr/bin/python3.5 /var/www/test/python/sensitive_words_analysis.py {$str}";
+						
+                        			exec($set_charset.$cmd, $out, $res);
+                        			$data = $out[0];
+						if($data ==  $str )  //若语义分析未识别到敏感词 ，进行情感分析
 						{
-							exec("python E:/PHP/htdocs/test/python/model_predict.py {$_POST['content']}", $out1, $res);
+								$cmd1 = "/usr/bin/python3.5 /var/www/test/python/model_predict.py {$str}";
+
+							exec($set_charset.$cmd1, $out1, $res);
 
 							$quality = $out1[0];
 						}else{                   //若语义分析识别到敏感词   情感分析为bad
 							$quality = 'bad';
 						}
-						@$query="insert into CM_comment (course_id,student_name,comment_time,comment_quality,comment_content,comment_photo) values('{$course['course_id']}',
-						'{$student_course['student_name']}','{$time}','{$quality}','{$data}','')";
+						@$query="insert into CM_comment (course_id,student_name,comment_time,comment_quality,comment_content,student_number) values('{$course['course_id']}',
+						'{$student_course['student_name']}','{$time}','{$quality}','$data','{$student_course['student_number']}')";
 						execute($link,$query);
 						skipto($adress,'ok','登录成功！');
 						   
-					}
-
+					}				
 				?>
 				
 			</div>
@@ -109,15 +113,31 @@ A;
 																			   
 			<?php  
 				@$query="select 
-				course_id,student_name,comment_time,comment_quality,comment_content,comment_photo from CM_comment
+				course_id,student_name,comment_time,comment_quality,comment_content,student_number from CM_comment
 				where course_id ='{$course_id}' {$page['limit']}";
 				$result_content=execute($link,$query);
 				while($data_content=mysqli_fetch_assoc($result_content)){
 			?>
 									
 			<div class=" " style ="margin-left:30px">
+			<?php  
+		$query="select register_name from CM_student where student_number='{$data_content['student_number']}'";
+		$result_register=execute($link,$query);
+		$register=mysqli_fetch_array($result_register);
+		$query="select * from CM_register where register_name='{$register['register_name']}'";
+		$result_register_photo=execute($link,$query);
+		$data_member=mysqli_fetch_array($result_register_photo);
+		
+				if($data_member['register_photo']==NULL or $register['register_name']==NULL){
+			$html=<<<A
 				<img src = "images/touxiang2.jpg" style ="width:60px;height:60px;border-radius:50%;margin-top:20px	">
-				<div style="width:600px;height:100px;background:#eeffee;border:1;position:relative;left:80px;top:-60px;border-radius:10px">
+A;
+			echo $html;	}else{
+				?>
+				
+				<img src = "<?php if($data_member['register_photo_small']!=''){echo SUB_URL.$data_member['register_photo_small'];}else if($data_member['register_photo']!=''){echo SUB_URL.$data_member['register_photo'];}else{echo '../style/photo.jpg';}?> "  style ="width:60px;height:60px;border-radius:50%;margin-top:20px	">
+<?php
+			}?>		<div style="width:600px;height:100px;background:#eeffee;border:1;position:relative;left:80px;top:-60px;border-radius:10px">
 					<label style="padding-left:10px;margin-top:0;color:#777777"><?php echo $data_content['comment_time'];?></label> 
 					<label style="padding-left:10px;color:#777777">情绪：<?php echo $data_content['comment_quality'];?></label> 
 					<div>

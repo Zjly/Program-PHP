@@ -1,6 +1,6 @@
 
 
-<h1><label><?php echo $course['course_name'] ?></label><label style="margin-left: 300px" ><?php  echo $course['course_score'];?></label> </h1>
+<h1><label><?php echo $course['course_name'] ?></label><label style="margin-left: 300px" ></label> </h1>
                                 <h4>
                            <label>学类： <?php echo $course['course_type'] ?></label>
                             <label>老师：<?php echo $teacher['teacher_name']?></label>

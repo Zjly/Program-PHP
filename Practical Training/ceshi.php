@@ -27,7 +27,7 @@ $php='person';
 	<link rel="stylesheet" href="css/light-box.css">
 	<link rel="stylesheet" href="css/templatemo-main.css">
 
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	
 
 	<script src="js1/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 	<!-- person -->

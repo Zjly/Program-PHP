@@ -7,6 +7,37 @@ $link=connect();
 $member_id=is_login($link);
 
 $php='person';
+@$query="select student_number from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
+$result=execute($link,$query);
+$student_number=mysqli_fetch_assoc($result);
+date_default_timezone_set('PRC');
+$today=date("ymd",strtotime("-0 day"));
+$query="select  sum(time) from CM_study_history where day='{$today}' and student_number='{$student_number['student_number']}'";
+$result=execute($link,$query);
+$time1=mysqli_fetch_array($result);
+$time_today=(int)($time1[0]/60);
+
+
+date_default_timezone_set('PRC');
+$yestoday=date("ymd",strtotime("-1 day"));
+$query="select  sum(time) from CM_study_history where day='{$yestoday}' and student_number='{$student_number['student_number']}'";
+$result=execute($link,$query);
+$time1=mysqli_fetch_array($result);
+$time_yesterday=(int)($time1[0]/60);
+
+
+$query="select count(*) from CM_student_course where student_number='{$student_number['student_number']}'";
+$result=execute($link,$query);
+$total=mysqli_fetch_array($result);
+$total_class=$total[0];
+
+
+
+$query="select  sum(time) from CM_study_history where  student_number='{$student_number['student_number']}'";
+$result=execute($link,$query);
+$time1=mysqli_fetch_array($result);
+$total_time=(int)($time1[0]/60);
+
 
 ?>
 
@@ -56,42 +87,30 @@ $php='person';
 									<dl>
 										<a href="#">
 											<dt>课程数</dt>
-											<dd>#</dd>
+											<dd><?php echo $total_class?></dd>
 										</a>
 									</dl>
 									<dl>
 										<a href="#">
 											<dt>学习时间</dt>
-											<dd>#</dd>
+											<dd><?php echo $time_today;?></dd>
 										</a>
 									</dl>
 									<dl>
 										<a href="#">
 											<dt>昨日学习时间</dt>
-											<dd>#</dd>
+											<dd><?php echo $time_yesterday ;?>
+											</dd>
 										</a>
 									</dl>
 									<dl>
 										<a href="#">
-											<dt>总课程学习数据指数</dt>
-											<dd>#</dd>
+											<dt>总课程学习时间</dt>
+											<dd><?php echo $total_time ;?></dd>
 										</a>
 									</dl>
 								</div>
 								
-							</div>
-							<div class="ydc-right-banner">
-								<div class="slideshow-container">
-									<a href="https://baidu.com/" target="_blank" class="mySlides fade">
-										<img src="person/images/ad/ad1.jpg" style="width:100%">
-									</a>
-									<a href="https://baidu.com" target="_blank" class="mySlides fade">
-										<img src="person/images/ad/ad2.jpg" style="width:100%">
-									</a>
-									<a href="http://www.baidu.com/" target="_blank" class="mySlides fade">
-										<img src="person/images/ad/ad3.jpg" style="width:100%">
-									</a>
-								</div>
 							</div>
 							<!-- gongGao begin -->
 							<div class="ydc-loading-box">
@@ -107,19 +126,31 @@ $php='person';
 											<ol class="ydc-pane-list">
 												<li>
 													<a href="page.html" target="_blank">大学生选课平台终于上线啦！<i>new</i></a>
-													<span>2019-04-17 10:00:00</span>
+													<span>2019-07-14 10:00:00</span>
 												</li>
 												<li>
 													<a href="page.html" target="_blank">5个技巧教你玩转大学生选课管理平台<i>new</i></a>
-													<span>2019-04-17 10:00:00</span>
+													<span>2019-07-15 10:00:00</span>
 												</li>
 												<li>
 													<a href="page.html" target="_blank">大学生选课管理平台重磅推出学习课程努力榜，丰厚现金奖励助力课程学习！</a>
-													<span>2019-04-17 10:00:00</span>
+													<span>2019-07-15 10:00:00</span>
 												</li>
+												<li>
+													<a href="page.html" target="_blank">大学生选课管理平台重磅推出学习课程努力榜，丰厚现金奖励助力课程学习！</a>
+													<span>2019-07-15 10:00:00</span>
+												</li>
+											        <li>
+													<a href="page.html" target="_blank">大学生选课管理平台重磅推出学习课程努力榜，丰厚现金奖励助力课程学习！</a>
+													<span>2019-07-15 10:00:00</span>
+												</li>
+
+
+
 											</ol>
-											
+										<br><br><br><br><br>	<br><br><br><br><br><br>
 										</div>
+									
 									</div>
 								</div>
 							</div>
@@ -131,22 +162,6 @@ $php='person';
 <!-- content YDC end -->
 
 	<script type="text/javascript" src="person/js/jquery.min.js"></script>
-	<script type="text/javascript">
-	    var slideIndex = 0;
-	    showSlides();
-
-	    function showSlides() {
-	        var i;
-	        var slides = document.getElementsByClassName("mySlides");
-	        for (i = 0; i < slides.length; i++) {
-	            slides[i].style.display = "none";
-	        }
-	        slideIndex++;
-	        if (slideIndex> slides.length) {slideIndex = 1}
-	        slides[slideIndex-1].style.display = "block";
-	        setTimeout(showSlides, 3000); // 滚动时间
-	    }
-	</script>
 
 	<script type="text/javascript">
 	    $(function(){

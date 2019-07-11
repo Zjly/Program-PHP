@@ -8,7 +8,7 @@ if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 $link=connect();
 
 $member_id=is_login($link);
-@var_dump($_COOKIE['cookie']['name']);
+
 if(!isset($_COOKIE['cookie']['name'])){
     skip('login.php', 'error', '给我去登陆');
 }

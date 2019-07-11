@@ -1,5 +1,6 @@
 
 <?php
+header("Content-Type: text/html; charset=utf-8");
 include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
@@ -37,50 +38,52 @@ $php='xuanze';
     <title>管理后台</title>
     <script src="js/jquery-1.7.1.min.js"></script>
 	<script src="js/ui.js"></script>
-	<!--弃用的分页
+
     <script type="text/javascript" src="admin/pagination.js"></script>
+
     <script type="text/javascript">
         //全局变量
-        var numCount;       //数据总数量
-        var columnsCounts;  //数据列数量
-        var pageCount;      //每页显示的数量
-        var pageNum;        //总页数
-        var currPageNum ;   //当前页数
+        var numCount1;       //数据总数量
+        var columnsCounts1;  //数据列数量
+        var pageCount1;      //每页显示的数量
+        var pageNum1;        //总页数
+        var currPageNum1 ;   //当前页数
 
         //页面标签变量
-        var blockTable;
-        var preSpan;
-        var firstSpan;
-        var nextSpan;
-        var lastSpan;
-        var pageNumSpan;
-        var currPageSpan;
+        var blockTable1;
+        var preSpan1;
+        var firstSpan1;
+        var nextSpan1;
+        var lastSpan1;
+        var pageNumSpan1;
+        var currPageSpan1;
 
 
 
         window.onload=function(){
             //页面标签变量
-            blockTable = document.getElementById("blocks");
-            preSpan = document.getElementById("spanPre");
-            firstSpan = document.getElementById("spanFirst");
-            nextSpan = document.getElementById("spanNext");
-            lastSpan = document.getElementById("spanLast");
-            pageNumSpan = document.getElementById("spanTotalPage");
-            currPageSpan = document.getElementById("spanPageNum");
+            blockTable1 = document.getElementById("blocks");
+            preSpan1 = document.getElementById("spanPre");
+            firstSpan1 = document.getElementById("spanFirst");
+            nextSpan1 = document.getElementById("spanNext");
+            lastSpan1 = document.getElementById("spanLast");
+            pageNumSpan1 = document.getElementById("spanTotalPage");
+            currPageSpan1 = document.getElementById("spanPageNum");
 
-            numCount = document.getElementById("blocks").rows.length - 1;       //取table的行数作为数据总数量（减去标题行1）
+            numCount1 = document.getElementById("blocks").rows.length - 1;       //取table的行数作为数据总数量（减去标题行1）
             //alert(numCount);可以弹出窗口说明总数
-            columnsCounts = blockTable.rows[0].cells.length;
-            pageCount = 5;
-            pageNum = parseInt(numCount/pageCount);
-            if(0 != numCount%pageCount){
-                pageNum += 1;
+            columnsCounts1 = blockTable.rows[0].cells.length;
+            pageCount1 = 5;
+            pageNum1 = parseInt(numCount/pageCount);
+            if(0 != numCoun1t%pageCount1){
+                pageNum1 += 1;
             }
 
             firstPage();
         };
     </script>
-	-->
+
+	
 </head>
 
 <?php include_once 'inc/person_head.php';?>
@@ -100,7 +103,7 @@ $php='xuanze';
 				<div class="ydc-release-amount">
 					<span>
 						今日已选课程数量：<em>0</em>
-						/6 <a href="standard.html" target="_blank">选课规则</a>
+						/6 <a href="standard.php" target="_blank">选课规则</a>
 					</span>
 				</div>
 			</div>
@@ -112,37 +115,21 @@ $php='xuanze';
 						<form method="post">
 							<div class="fl ydc-group-input">
 							
-								<input type="text" name="search" placeholder="请输入关键词进行课程查询搜索" list = "course" onkeyup="showResult(this.value)">
+								<input type="text" name="search" id = "search" placeholder="请输入关键词进行课程查询搜索" list = "course" onkeyup="showResult(this.value)" autocomplete="off">
 								
-								<datalist id="course" onkeyup = "tiaoz(this.id)" name ="course"> 
-									<option id = "1" value="http://www.baidu.com">>遥感</option> 
-									<option id = "2" value="Coda" /> 
-									<option id = "3" value="Dreamweaver" /> 
-									<option id = "4" value="Espresso" /> 
-									<option id = "5" value="jEdit" /> 
-									<option id = "6" value="Komodo Edit" /> 
-									<option id = "7" value="Notepad++" /> 
-									<option id = "8" value="Sublime Text 2" /> 
-									<option id = "9" value="Taco HTML Edit" /> 
-									<option id = "10" value="Textmate" /> 
-									<option id = "11" value="Text Pad" /> 
-									<option id = "12" value="TextWrangler" /> 
-									<option id = "13" value="Visual Studio" /> 
-									<option id = "14" value="VIM" /> 
-									<option id = "15" value="XCode" /> 
-								</datalist>
+	
 								<button name="submit" type="submit" class="ydc-group-button">搜 索</button>
-
-
 								
 							</div>
+								<button name="tuijian" style = "margin-left:100"type="submit" class="ydc-group-button">自动推荐</button>
 							<div class="col-md-10">
 								<nav>
 									<ul class="dropdown">
-										<div id="livesearch" style ="Z-index = 99"></div>
+										<div id="livesearch" style="color:blue;overflow:auto;font-size:15;font-style:normal;margin-left:-10;width:400px;height:130px;background:#ffffff;position:relative;left:0px;top:0px;border-radius:4px;box-shadow:0px 0px  5px 1px #aaa;"></div>
 									</ul>
 								</nav>
 							</div>
+
 						</form>
 					</div>
 				
@@ -161,12 +148,12 @@ $php='xuanze';
 												<th><h4>院系</h4></th>
 												<th><h4>操作</h4></th>
 											</tr>
+										
 <!--读取数据库-->									
 <?php if(isset($_POST['submit'])){
 	$query="select count(*) from CM_course where course_name like '%{$_POST['search']}%' ";
 	$count_all=num($link,$query);
-	$page=page($count_all,5);
-	$query="select * from CM_course where course_name like '%{$_POST['search']}%' {$page['limit']}";
+	$query="select * from CM_course where course_name like '%{$_POST['search']}%'";
 	$result=execute($link,$query);
 	while ($data=mysqli_fetch_assoc($result)){
 		$query="select * from CM_course where cID='{$data['cID']}'";
@@ -192,10 +179,59 @@ $html=<<<A
 				<td></br><div class="alert open" style="color:#00F" onclick="mizhu.open(200, 450, '</br>课程详情', '$info_url');"><h5>[查看详细]</h5></div><a href="$add_url"><h5>[选课]</h5></a></td>
 		                                    
 			</tr>
+										
 				
 A;
 		echo $html;
+										
 		}
+	}
+	else if(isset($_POST['tuijian'])){
+		   if(@$_COOKIE['cookie']['name']==NULL){echo "<script type='text/javascript'>alert('请登陆');</script>";return;
+        }
+		$page=page(3,5);
+		$query="select * from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
+		$result=execute($link,$query);
+		$student_number=mysqli_fetch_array($result);
+		if($student_number==null){
+			echo "<script type='text/javascript'>alert('请登陆');</script>";return;
+		}
+		$set_charset = 'export LANG=en_US.UTF-8;';
+   		$cmd = "/usr/bin/python3.5 /var/www/test/python/collaborative_filtering_algorithm.py {$student_number['student_number']}";
+		exec($set_charset.$cmd, $out, $res);
+		$i=0;
+     while($i<=2)
+		{
+			$data = $out[$i];
+			$query="select * from CM_course where cID='{$data}'";
+		    $result2=execute($link,$query);
+		    $M=mysqli_fetch_array($result2);
+		    $query="select * from CM_teacher where tID='{$M['tID']}'";
+		    $result3=execute($link,$query);
+		    $T=mysqli_fetch_array($result3);
+			$url=urlencode("xuanze_add.php?id={$data}");
+			$return_url=urlencode($_SERVER['REQUEST_URI']);
+			$message="你真的要选择这门课嘛 {$M['course_name']} 吗？";
+			$add_url="confirm.php?url={$url}&return_url={$return_url}&message={$message}";
+			$info_url="courseinfo.php?cID={$data}";
+			$i++;	
+		
+			
+$html=<<<A
+			<tr>
+				<td></br><input class="sort" type="button" name="sort[{$data}]" value="{$data}"  style = "margin-left:12px;font-size:10px"/></td>
+				<td></br><h5>{$M['course_name']}[cID:{$M['cID']}]</h5></td>
+				<td></br><h5>{$T['teacher_name']}</h5></td>
+				<td></br><h5>{$M['course_college']}</h5></td>
+				<td></br><div class="alert open" style="color:#00F" onclick="mizhu.open(200, 450, '</br>课程详情', '$info_url');"><h5>[查看详细]</h5></div><a href="$add_url"><h5>[选课]</h5></a></td>
+		   	</tr>
+
+				
+A;
+			echo $html;
+		}
+
+		
 	}else{
 		$query="select count(*) from CM_course ";
 		$count_all=num($link,$query);
@@ -233,22 +269,19 @@ A;
 		?>
 		
 										</table>
-										<!--弃用的分页
-										<div id="pagiDiv" align="left" style="width:1200px">
-											<span id="spanFirst">First</span>  
-											<span id="spanPre">Pre</span>  
-											<span id="spanNext">Next</span>  
-											<span id="spanLast">Last</span>  
-											The <span id="spanPageNum"></span> Page/Total <span id="spanTotalPage"></span> Page
-										</div>
-										-->
+
+										
+										
+										
 									</div>
 <?php
 	echo $page['html'];
 ?>
+										
 	
 								</form>
-                            </div>
+										
+                           				 </div>
 						</div>
 					</div>
 					
@@ -324,23 +357,18 @@ A;
 	    }
 	</script>
 	-->
-	<script type="text/JavaScript">
-		function tiaoz(x){
-			var datalist = document.getElementById(x);
-			var 	
-		}
-		var datalist = document.getElementById('course');
-		
-	</script>
-		<script type = "text/JavaScript">
-				
-			var select = document.querySelector('select');
-			select.onchange = function(){
-				window.location=this.value;
-			}
-		</script>
 	<script type="text/javascript">
 	    $(function(){
+			document.getElementById("livesearch").style.visibility="hidden";
+			var bool = 1;
+			while(bool == 1){
+				if(document.getElementById("seache").value != ''){	
+				document.getElementById("livesearch").style.visibility="visible";
+				bool = 0;
+				}
+			}
+			
+			
 	        $('.ydc-tabPanel ul li').click(function(){
 	            $(this).addClass('hit').siblings().removeClass('hit');
 	            $('.ydc-panes>div:eq('+$(this).index()+')').show().siblings().hide();
@@ -349,12 +377,16 @@ A;
 
 	    function showResult(str)
 	    {
+				 
 	        if (str.length==0)
 	        { 
+				
 	            document.getElementById("livesearch").innerHTML="";
 	            document.getElementById("livesearch").style.border="0px";
+				document.getElementById("livesearch").style.visibility="hidden";
 	            return;
 	        }
+			document.getElementById("livesearch").style.visibility="visible";
 	        if (window.XMLHttpRequest)
 	        {// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行
 	            xmlhttp=new XMLHttpRequest();
@@ -368,8 +400,8 @@ A;
 	            if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	            {
 	                document.getElementById("livesearch").innerHTML=xmlhttp.responseText;
-	                document.getElementById("livesearch").style.border="20px soild #dddddd";
-	                document.getElementById("livesearch").style.borderTopWidth="10px";
+	                document.getElementById("livesearch").style.border="1px solid #66aaff";
+	                document.getElementById("livesearch").style.borderTopWidth="1px";
 	            }
 	        }
 	        xmlhttp.open("GET","livesearch.php?q="+str,true);

@@ -6,7 +6,7 @@ if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 	skip('register_module.php','error','id参数错误！');
 }
 $link=connect();
-
+$member_id=is_login_manage($link);
 $query="select * from CM_recommend where cID ='{$_GET['id']}'";
 $result=execute($link,$query);
 

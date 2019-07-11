@@ -48,8 +48,7 @@ $member_id=is_login($link);
     <link href="css1/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome-icons -->
     <!-- /Fonts -->
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+   
     <!-- //Fonts -->
     
 </head>
@@ -90,26 +89,31 @@ $member_id=is_login($link);
                         <section id="content2" class="inner-w3layouts-wrap">
                             <h3 class="head-w3ls">我们的团队</h3>
                           <div class="contentbox">
-	                             <h4>2222</h4>
+	                             <h4>团队名称:代码全写队</h4>
+
+<h4>中文寓意:队与对谐音，表示我们对于代码全写对的美好愿望，希望代码能够不出BUG，写得又快又好。</h4>
+
+<h4>团队宣言:我们是代码能够全写对的团队。
+</h4>
                         </section>
                         <section id="content3" class="inner-w3layouts-wrap">
                             <h3 class="head-w3ls">网站预览</h3>
                             <div class="row news-grids text-center">
                                 <div class="col-4 gal-img">
-                                    <a href="#gal1"><img src="images/g1.jpg" alt="news image" class="img-fluid"></a>
-                                    <a href="#gal2"><img src="images/g3.jpg" alt="news image" class="img-fluid"></a>
+                                    <a href="#gal1"><img src="images/g1.jpg" alt="news image" class="img-fluid"style="width:300px;height:150px"></a>
+                                    <a href="#gal2"><img src="images/g4.jpg" alt="news image" class="img-fluid"style="width:300px;height:150px"></a>
     
     
                                 </div>
                                 <div class="col-4 gal-img">
-                                    <a href="#gal3"><img src="images/g2.jpg" alt="news image" class="img-fluid"></a>
-                                    <a href="#gal4"><img src="images/g4.jpg" alt="news image" class="img-fluid"></a>
+                                    <a href="#gal3"><img src="images/g2.jpg" alt="news image" class="img-fluid"style="width:300px;height:150px"></a>
+                                    <a href="#gal4"><img src="images/g5.jpg" alt="news image" class="img-fluid"style="width:300px;height:150px"></a>
                                 </div>
                                 <div class="col-4 gal-img">
     
     
-                                    <a href="#gal5"><img src="images/g5.jpg" alt="news image" class="img-fluid"></a>
-                                    <a href="#gal6"><img src="images/g6.jpg" alt="news image" class="img-fluid"></a>
+                                    <a href="#gal5"><img src="images/g3.jpg" alt="news image" class="img-fluid"style="width:300px;height:150px"></a>
+                                    <a href="#gal6"><img src="images/g6.jpg" alt="news image" class="img-fluid"style="width:300px;height:150px"></a>
                                 </div>
                                 <!-- popup-->
     

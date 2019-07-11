@@ -34,6 +34,11 @@ if(@$_COOKIE['cookie']['name']!=NULL){
 if(isset($_POST['xuanke'])){
         if(@$_COOKIE['cookie']['name']==NULL){skip($adress,'error','请登陆后再选课');
         }
+	$query="select * from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
+	 $result=execute($link,$query);
+	$A=mysqli_fetch_assoc($result);
+	if($A[rID]==NULL){skip($adress,'error','请绑定学籍后再选课');
+}
         $query="select * from CM_student_course where student_number='{$student_course['student_number']}' and cID='{$course['cID']}'";
         $result=execute($link,$query);
         if(mysqli_fetch_assoc($result)){
@@ -47,20 +52,20 @@ if(isset($_POST['xuanke'])){
 
 if(empty($_POST['time_code'])){
 }else{
-	if(@$_COOKIE['cookie']['name']==NULL){skip($adress,'error','请登陆后再选课');
+if(@$_COOKIE['cookie']['name']==NULL){
+		skip($adress,'error','请登陆后再选课');
         }
-       @$query="select student_number from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
-       $result=execute($link,$query);
-       $student_number=mysqli_fetch_array($result);
-       date_default_timezone_set('PRC');
+		$query="select * from CM_student_course where student_number='{$student_course['student_number']}' and cID='{$course['cID']}'";
+        $result=execute($link,$query);
+        if(mysqli_fetch_assoc($result)!=null){
        $day=date('ymd', time());
        
         if($_POST['time_code']=='1'){
 			
-		$query="select * from CM_study_history where course_id='{$course_id}'and student_number='{$student_number['student_number']}'and day='{$day}'";
+		$query="select * from CM_study_history where course_id='{$course_id}'and student_number='{$student_course['student_number']}'and day='{$day}'";
 		$result=execute($link,$query);
 		if(mysqli_num_rows($result)==0){
-	    $query="insert into CM_study_history(course_id,student_number,day) values('{$course_id}','{$student_number['student_number']}','{$day}')";
+	    $query="insert into CM_study_history(course_id,student_number,day) values('{$course_id}','{$student_course['student_number']}','{$day}')";
 		execute($link, $query);
 		}
         $query="update CM_study_history set time=time+5 where course_id='{$course_id}'";
@@ -74,7 +79,7 @@ if(empty($_POST['time_code'])){
 		}
 		测试用*/
         }
-    }
+		} }
 
 
 ?>

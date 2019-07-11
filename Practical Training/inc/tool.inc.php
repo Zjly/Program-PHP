@@ -50,4 +50,20 @@ function is_login($link){
 		return false;
 	}
 }
+function is_login_manage($link){
+    if(isset($_COOKIE['cookie']['name']) && isset($_COOKIE['cookie']['pw'])&& isset($_COOKIE['cookie']['member_id'])){
+        if($_COOKIE['cookie']['member_id']!='管理员' and $_COOKIE['cookie']['member_id']!='院系管理'){skip('/test/index.php','error','非法登陆');}
+        $query="select * from CM_register where register_name='{$_COOKIE['cookie']['name']}' and sha1(register_password)='{$_COOKIE['cookie']['pw']}' and register_work='{$_COOKIE['cookie']['member_id']}'";
+        $result=execute($link,$query);
+
+        if(mysqli_num_rows($result)==1){
+            $data=mysqli_fetch_assoc($result);
+            return $data['rID'];
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
 ?>

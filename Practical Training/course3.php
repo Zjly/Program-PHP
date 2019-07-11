@@ -44,13 +44,7 @@ $course_id='20182047080';
                             <li><a href="course.php">课程资源</a>
                                
                             </li>
-                            <li><a href="kecheng.php">课程分类</a>
-                                <ul class="dropdown">
-                                    <li><a href="">计算机类</a></li>
-                                    <li><a href="">文学类</a></li>
-                                    <li><a href="">通识类</a></li>
-                                </ul>
-                            </li>
+                            
                             
                             <li><a href="person.php">个人信息</a>
                                
@@ -89,6 +83,7 @@ $course_id='20182047080';
 <div class="col-md-8 col-sm-12 col-xs-12">
 <!-- Single blog -->
 <div class="single-blog">
+<div style="width:730px;height:1350px;background:white;position:relative;left:0px;top:20px;border-radius:10px">
 
 <div class="video">
 	<div class="container" >
@@ -127,8 +122,15 @@ function close1(){
 	$('.videos').html();
 }
 </script>
-                            <div class="blog-content">
+                            <div class="blog-content" style="margin-left:20;margin-right:20">
                                 <?php include_once 'index.inc/index2.inc.php';?>
+				<p>随着信息技术的发展以及计算机应用的普及，网络环境中的信息安全与人们的生活、工作和学习息息相关。本课程主要介绍信息安全的基本概念，密码学的基本术语和原理，以及日常使用中安全知识和技能。由于信息安全的核心是密码学，所以密码学也是本课程的重点。</p>
+
+ 				<p><strong>课程概述</strong></p>
+				<p>(1)随着信息技术的发展以及计算机应用的普及，网络环境中的信息安全与人们的生活、工作和学习息息相关。</p>
+				<p>(2)本课程主要介绍信息安全的基本概念，密码学的基本术语和原理，以及日常使用中安全知识和技能。</p>
+				<p>(3)由于信息安全的核心是密码学，所以密码学也是本课程的重点。本课程由绪论、信息安全初步、信息安全技术、传统密码学、公钥密码算法、Hash函数、基于身份的公钥密码学、数字签名、密钥管理和密码学中的基本数学知识组成。
+					本书可作为计算机科学、通信、电子工程等相关专业的本科学生或研究生一个课程。请注意这不是教黑客技术的课程：）</p>
                                <p><strong>课程大纲</strong>
                                </p>
                                <br><label>第一章 信息安全绪论</label>
@@ -141,6 +143,7 @@ function close1(){
                                                <br><label>第八章 系统安全之计算机病毒I</label>
                                                 <br><label>第九章 系统安全之计算机病毒II</label>
                             </div>
+			</div>
                         </div><!--/ End Single blog -->
 
                         <!-- Blog Comment Wrappper-->
@@ -153,15 +156,12 @@ function close1(){
                   <div class="col-12 col-sm-12 col-md-4 col-lg-4 blog_wrapper_right ">
                       <div class="blog-right-items">
                   
-                          <div class="search_blog widget_single">
-                              <div class="form-full-box">
-                                  <form>
-                                      <div class="form-group">
-                                          <input class="form-control" name="name" placeholder="课程名称"  type="text">
-                                          <button class="register-btn" type="submit"><i class="fa fa-search"></i></button>
-                                      </div>
-                                  </form>
-                              </div>
+                          <div style="margin-top:20;border:solid 2px #ffffff;border-radius:10px ">
+                              
+                                  
+					<img src="images/whulogo.jpg" >
+                                   
+                              
                           </div>
                   
                   
@@ -283,7 +283,7 @@ function close1(){
 							<p>代码全写队 <br> 产品经理： 项目经理： 技术经理： 成员：</p>
 						</div>
 						<ul class="footer-contact">
-							<li><img class="map" src="images/icon/map.png" alt="">武汉大学</li>
+							
 							<li><img class="map" src="images/icon/phone.png" alt="">+123-456-7890</li>
 							<li><img class="map" src="images/icon/gmail.png" alt="">123456789@qq.com</li>
 						</ul>

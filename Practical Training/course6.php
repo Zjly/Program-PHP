@@ -51,13 +51,7 @@ $query="select * from CM_course where course_id='{$course_id}'";
                             <li><a href="course.php">课程资源</a>
                                 
                             </li>
-                            <li><a href="kecheng.php">课程分类</a>
-                                <ul class="dropdown">
-                                    <li><a href="">计算机类</a></li>
-                                    <li><a href="">文学类</a></li>
-                                    <li><a href="">通识类</a></li>
-                                </ul>
-                            </li>
+                           
                             
                             <li><a href="person.php">个人信息</a>
                                
@@ -96,7 +90,7 @@ $query="select * from CM_course where course_id='{$course_id}'";
 <div class="col-md-8 col-sm-12 col-xs-12">
 <!-- Single blog -->
 <div class="single-blog">
-
+<div style="width:730px;height:1350px;background:white;position:relative;left:0px;top:20px;border-radius:10px">
 <div class="video">
 	<div class="container" >
 		<div class="videolist" vpath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course6.png" ipath="https://mazan-1259499226.cos.ap-shanghai.myqcloud.com/course6.mp4">
@@ -134,7 +128,7 @@ function close1(){
 	$('.videos').html();
 }
 </script>
-                            <div class="blog-content">
+                            <div class="blog-content" style="margin-left:20;margin-right:20"
                                 <?php include_once 'index.inc/index2.inc.php';?>
                                 
                                 <p>本课程以小专题的形式，选取部分典型遥感技术应用，每周讲授一章，带领大家一同探索其中的科学进步历程。</p>
@@ -150,6 +144,7 @@ function close1(){
                                                 <br><label>第四章 九天之外的火眼金睛</label>
                                               <br><label>第五章 遥感卫星带你看地球</label>
                             </div>
+			</div>
                         </div><!--/ End Single blog -->
 
                        <!-- Blog Comment Wrappper-->
@@ -162,15 +157,12 @@ function close1(){
                   <div class="col-12 col-sm-12 col-md-4 col-lg-4 blog_wrapper_right ">
                       <div class="blog-right-items">
                   
-                          <div class="search_blog widget_single">
-                              <div class="form-full-box">
-                                  <form>
-                                      <div class="form-group">
-                                          <input class="form-control" name="name" placeholder="课程名称"  type="text">
-                                          <button class="register-btn" type="submit"><i class="fa fa-search"></i></button>
-                                      </div>
-                                  </form>
-                              </div>
+                          <div style="margin-top:20;border:solid 2px #ffffff;border-radius:10px ">
+                              
+                                  
+					<img src="images/whulogo.jpg" >
+                                   
+                              
                           </div>
                   
              <div class="recent_post_wrapper widget_single">
@@ -290,7 +282,7 @@ function close1(){
 							<p>代码全写队 <br> 产品经理： 项目经理： 技术经理： 成员：</p>
 						</div>
 						<ul class="footer-contact">
-							<li><img class="map" src="images/icon/map.png" alt="">武汉大学</li>
+							
 							<li><img class="map" src="images/icon/phone.png" alt="">+123-456-7890</li>
 							<li><img class="map" src="images/icon/gmail.png" alt="">123456789@qq.com</li>
 						</ul>

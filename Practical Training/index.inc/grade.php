@@ -87,7 +87,7 @@
 
 <div style="width:150px;">
 	<form method = "post">
-	<div style="width:200px;margin-left:200px">
+	<div style="width:200px;margin-left:230px">
 			<p><b>课程分数：</b></p>
 			<div class="#">
 				<div id="course_grade"></div>
@@ -101,13 +101,13 @@
 	
 	<br>
 	</div>	
-	<hr width=565 style = "margin-left:-100">
+	<hr width=630 style = "margin-left:-100">
 
 	<!------------------------------------------------------->
 
 	<!------------------------demo2-------------------------->
 
-	<div style="width:200px;margin-left:200px">
+	<div style="width:200px;margin-left:230px">
 		<p><b>老师分数：</b></p>
 			<div class="#">
 				<div id="teacher_grade"></div>
@@ -119,10 +119,9 @@
 		
 	</div>
 	</div>
-	<br>
-	<br>
-	<hr width=565 style = "margin-left:-100">
-	<input type="submit" class = "submit" value="提交分数"  name="submit" style = "margin-left:200px">
+	<br><br>
+	<hr width=630 style = "margin-left:-130">
+	<input type="submit" class = "submit" value="提交分数"  name="submit" style = "margin-left:250px;margin-top:40px">
 	<?php
 	include_once '../inc/config.inc.php';
 	include_once '../inc/mysql.inc.php';

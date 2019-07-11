@@ -5,6 +5,9 @@ include_once '../inc/tool.inc.php';
 $template['title']='老师版块-修改';
 $template['css']=array('style/public.css');
 $link=connect();
+$member_id=is_login_manage($link);if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 	skip('son_module.php','error','id参数错误！');
 }
@@ -15,6 +18,8 @@ if(!mysqli_num_rows($result)){
 }
 if(isset($_POST['submit'])){
 	//验证
+    $_POST=escape($link,$_POST);
+    $_POST=escape_js($_POST);
 	$check_flag='update';
 	include 'inc/check_son_module.inc.php';
 	$query="update CM_teacher set teacher_name='{$_POST['teacher_name']}',teacher_introduce='{$_POST['teacher_introduce']}',teacher_totalScore='{$_POST['teacher_totalScore']}' where tID='{$_GET['id']}'";

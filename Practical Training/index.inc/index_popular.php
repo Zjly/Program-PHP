@@ -42,7 +42,7 @@ A;
 			$html=<<<A
 			<div class="single-destination"style="width: 230px;height:400px">
 				<figure>
-					<a href="course2.php"><img src="https://edu-image.nosdn.127.net/821FF02EBD63421A183F6F4A41AAEEA0.jpg?imageView&thumbnail=426y240&quality=100&thumbnail=223x125&quality=100" alt="">
+					<a href="course2.php"><img src="https://edu-image.nosdn.127.net/76F0C19078017F0FA44FFBA7A6B83E9B.jpg?imageView&thumbnail=510y288&quality=100&thumbnail=223x125&quality=100" alt="">
 					</a>
 					<figcaption>
 						<a href="course2.php" class="travel-booking-btn hvr-shutter-out-horizontal">Read More</a>

@@ -10,7 +10,7 @@ foreach ($template['css'] as $val){
     echo "<link rel='stylesheet' type='text/css' href='{$val}' />";
 }
 $course_id='20182047086';
-$adress='course9.php';
+$adress='course1.php';
 
 include_once 'index.inc/index1.inc.php';
 ?>
@@ -46,13 +46,7 @@ include_once 'index.inc/index1.inc.php';
                             <li><a href="course.php">课程资源</a>
                                 
                             </li>
-                           <li><a href="kecheng.php">课程分类</a>
-                                <ul class="dropdown">
-                                    <li><a href="">计算机类</a></li>
-                                    <li><a href="">文学类</a></li>
-                                    <li><a href="">通识类</a></li>
-                                </ul>
-                            </li>
+                           
                             
                             <li><a href="person.php">个人信息</a>
                                
@@ -91,6 +85,7 @@ include_once 'index.inc/index1.inc.php';
 <div class="col-md-8 col-sm-12 col-xs-12">
 <!-- Single blog -->
 <div class="single-blog">
+<div style="width:730px;height:1380px;background:white;position:relative;left:0px;top:20px;border-radius:10px">
 
 <div class="video">
 	<div class="container" >
@@ -131,7 +126,7 @@ function close1(){
 </script>
 
 
-<div class="blog-content">
+<div class="blog-content" style = "margin-left:20px;margin-right:20">
     <!-- Start blog -->
     <?php include_once 'index.inc/index2.inc.php';?>
                                 <p>C语言是目前历史最悠久的高级编程语言，它具备了现代程序设计的基础要求，它的语法、基本算法和编程思想是其他编程语言的基础，在系统程序、嵌入式系统等领域应用广泛，在各类编程语言排行榜上常年名列前茅。 本课程是零基础的编程入门课，是后续操作系统、编译原理、信号处理、人工智能等课程的基石。</p>
@@ -161,6 +156,7 @@ C语言可以用于开发比较底层的东西，比如驱动、通信协议之�
                                               <br><label>第十三章 不同类型数据的处理——结构体和共用体</label>
                                               <br><label>第十四章 文件</label>
                             </div>
+			</div>
                         </div><!--/ End Single blog -->
 
                         <!-- Blog Comment Wrappper-->
@@ -173,15 +169,12 @@ C语言可以用于开发比较底层的东西，比如驱动、通信协议之�
                   <div class="col-12 col-sm-12 col-md-4 col-lg-4 blog_wrapper_right ">
                       <div class="blog-right-items">
                   
-                          <div class="search_blog widget_single">
-                              <div class="form-full-box">
-                                  <form>
-                                      <div class="form-group">
-                                          <input class="form-control" name="name" placeholder="课程名称"  type="text">
-                                          <button class="register-btn" type="submit"><i class="fa fa-search"></i></button>
-                                      </div>
-                                  </form>
-                              </div>
+                          <div style="margin-top:20;border:solid 2px #ffffff;border-radius:10px ">
+                              
+                                  
+					<img src="images/whulogo.jpg" >
+                                   
+                              
                           </div>
                   
                   
@@ -303,7 +296,7 @@ C语言可以用于开发比较底层的东西，比如驱动、通信协议之�
 							<p>代码全写队 <br> 产品经理： 项目经理： 技术经理： 成员：</p>
 						</div>
 						<ul class="footer-contact">
-							<li><img class="map" src="images/icon/map.png" alt="">武汉大学</li>
+							
 							<li><img class="map" src="images/icon/phone.png" alt="">+123-456-7890</li>
 							<li><img class="map" src="images/icon/gmail.png" alt="">123456789@qq.com</li>
 						</ul>

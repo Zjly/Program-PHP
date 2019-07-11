@@ -5,7 +5,10 @@ include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
 $link=connect();
-
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 $template['title']='管理员权限剥夺版块列表';
 $template['css']=array('style/public.css');
 ?>

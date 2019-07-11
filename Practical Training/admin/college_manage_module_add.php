@@ -9,7 +9,10 @@ if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 	skip('register_module.php','error','id参数错误！');
 }
 $link=connect();
-
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 $query="select * from CM_register where rID={$_GET['id']}";
 $result=execute($link,$query);
 $S=mysqli_fetch_array($result);

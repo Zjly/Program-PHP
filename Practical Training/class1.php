@@ -36,8 +36,7 @@ $php='class1';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../assets/css/layui.css">
-    <link rel="stylesheet" href="../assets/css/view.css"/>
+    
     <link rel="icon" href="/favicon.ico">
     <link href="css/style.css" rel="stylesheet" />
     <title>管理后台</title>
@@ -131,6 +130,8 @@ $php='class1';
 									<?php 
 									
 									if(isset($_POST['submit'])){
+									    escape($link,$_POST);
+									    
 									    $query="select student_number from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
 									    $result=execute($link,$query);
 									    $S=mysqli_fetch_array($result);//学生号码
@@ -212,12 +213,13 @@ A;
 		                           
 		                          ?>
 	                        </table>
-	        <div id="pagiDiv" align="left" style="width:1200px">
-        <span id="spanFirst">First</span>  
-        <span id="spanPre">Pre</span>  
-        <span id="spanNext">Next</span>  
-        <span id="spanLast">Last</span>  
-        The <span id="spanPageNum"></span> Page/Total <span id="spanTotalPage"></span> Page
+		<br>
+	        <div id="pagiDiv" align="left" style="width:1200px;margin-left:180px">
+        		<span id="spanFirst" class="ydc-previous-item-btn-medium">First</span>  
+        		<span id="spanPre" class="ydc-previous-item-btn-medium">Pre</span>  
+        		<span id="spanNext" class="ydc-previous-item-btn-medium">Next</span>  
+        		<span id="spanLast" class="ydc-previous-item-btn-medium">Last</span>  
+       		 The <span id="spanPageNum" class="ydc-previous-item-btn-medium cur"></span> Page/Total <span id="spanTotalPage" class="ydc-previous-item-btn-medium "></span> Page
         </div>
         </div>
 	                       </form>
@@ -261,6 +263,7 @@ A;
 									</ol>
 								</div>
 								 -->
+								<!--广告弃用
 								<div class="ydc-right-banner">
 									<div class="slideshow-container">
 										<a href="https://baidu.com/" target="_blank" class="mySlides fade">
@@ -274,6 +277,7 @@ A;
 										</a>
 									</div>
 								</div>
+								-->
 							</div>
 						</div>
 					</div>

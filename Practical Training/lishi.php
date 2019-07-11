@@ -45,45 +45,7 @@ $php='lishi';
 	<script src="js/ui.js"></script>
     <script type="text/javascript" src="admin/pagination.js"></script>
     <script type="text/javascript">
-        //全局变量
-        var numCount;       //数据总数量
-        var columnsCounts;  //数据列数量
-        var pageCount;      //每页显示的数量
-        var pageNum;        //总页数
-        var currPageNum ;   //当前页数
-
-        //页面标签变量
-        var blockTable;
-        var preSpan;
-        var firstSpan;
-        var nextSpan;
-        var lastSpan;
-        var pageNumSpan;
-        var currPageSpan;
-
-
-
-        window.onload=function(){
-            //页面标签变量
-            blockTable = document.getElementById("blocks");
-            preSpan = document.getElementById("spanPre");
-            firstSpan = document.getElementById("spanFirst");
-            nextSpan = document.getElementById("spanNext");
-            lastSpan = document.getElementById("spanLast");
-            pageNumSpan = document.getElementById("spanTotalPage");
-            currPageSpan = document.getElementById("spanPageNum");
-
-            numCount = document.getElementById("blocks").rows.length - 1;       //取table的行数作为数据总数量（减去标题行1）
-            //alert(numCount);可以弹出窗口说明总数
-            columnsCounts = blockTable.rows[0].cells.length;
-            pageCount = 4;
-            pageNum = parseInt(numCount/pageCount);
-            if(0 != numCount%pageCount){
-                pageNum += 1;
-            }
-
-            firstPage();
-        };
+       
     </script>
 </head>
 				<!-- right begin -->
@@ -91,143 +53,101 @@ $php='lishi';
 					<div class="ydc-release-content">
 						<div class="ydc-tabPanel ydc-tabPanel-release">
 							<div class="ydc-release-tab-head">
-								<ul>
-									<li class="hit">已选课程查看</li>
-								</ul>
-								<div class="ydc-release-amount">
-                                        <span>
-                                            今日已选课程数量：<em>#</em>
-                                            /# <a href="standard.html" target="_blank">选课规则</a>
-                                        </span>
-								</div>
+							
+								
 							</div>
 							<div class="ydc-panes">
 								<div class="ydc-pane" style="display:block;">
-									<div class="clearfix">
-									<form method="post">
-										<div class="fl ydc-group-input">
-											<input type="text"name="search"  placeholder="请输入关键词进行搜索">
-											<button type="submit" name="submit" class="ydc-group-button">搜 索</button>
-											
-										</div>
-										<button type="submit" class="ydc-group-button"onclick="href='class1.php'">返回</button>
-										</form>
+								<div ><h4><label>课程学习记录</label></h4></div>	
+									<script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+<script src="https://magicbox.bk.tencent.com/static_api/v3/assets/echarts-2.0/echarts-all.js"></script>
+
+<div id="chart8_demo1" style="height: 500px; padding: 10px; -webkit-tap-highlight-color: transparent; user-select: none; background-color: rgba(0, 0, 0, 0); cursor: default;" _echarts_instance_="1562644559670">
+    <div style="position: relative; overflow: hidden; width: 1268px; height: 500px;">
+        <div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 1268px; height: 500px; user-select: none;"></div>
+        <canvas width="1268" height="500" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 1268px; height: 500px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+        <canvas width="1268" height="500" data-zr-dom-id="1" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 1268px; height: 500px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+        <canvas width="1268" height="500" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 1268px; height: 500px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+        <div class="echarts-dataview" style="position: absolute; display: block; overflow: hidden; transition: height 0.8s ease 0s, background-color 1s ease 0s; z-index: 1; left: 0px; top: 0px; width: 1268px; height: 0px; background-color: rgb(240, 255, 255);"></div>
+        <div class="echarts-tooltip zr-element" style="position: absolute; display: none; border-style: solid; white-space: nowrap; transition: left 0.4s ease 0s, top 0.4s ease 0s; background-color: rgba(0, 0, 0, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); padding: 5px; left: 1014px; top: 261px;">周六
+            </div>
+    </div>
+</div>
+<script>
+// Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
+function createEAreaChart(conf){   
+    //--- 区域图 ---
+    var myChart = echarts.init(document.getElementById(conf.selector));
+    var legendData = [] 
+    for(var i = 0; i < conf.data.series.length;i++){
+        legendData.push(conf.data.series[i].name)
+    }
+       myChart.setOption({
+        title : {
+            text: conf.data.text
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:legendData
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : conf.data.xAxis
+            }
+        ],
+        toolbox: {
+            show : true,
+			y:'bottom',
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : conf.data.series
+    });
+}
+function initEAreaChart(conf){
+    $.ajax({
+        url: conf.url,
+        type: 'GET',
+        dataType: conf.dataType,
+        success: function(res){
+            //获取数据成功
+			console.log(res);
+            if (res.result){
+                var data = res.data;
+                createEAreaChart({
+                    selector: conf.containerId, // 图表容器
+                    data: data, // 图表数据
+                });
+            }
+        },
+		error:function(res){
+		}
+    });
+}
+$(function(){
+    initEAreaChart({
+        url: 'echart.php',
+        dataType: 'json',
+        containerId: 'chart8_demo1'
+    });   
+});
+//chart8_demo1_js_end
+</script>
+
 									</div>
-									<div class="ydc-group-altogether">共<span>#</span>门课程</div>
-									<div class="ydc-group-table">
-									
-									<div id="main" style = "margin-left:0px;font-size:15px">
-									<div class="title" style = "font-size:20px">课程</div>
-									<form method="post">
-									<div class="container">
-									<table  id="blocks" class="list" style="margin-top:25px;width:800px;table-layout:fixed">
-										<tr>
-											<th style = "width:100px"><h4>课程序号</h4></th>	 	 	
-											<th style = "width:300px"><h4>名字</h4></th>
-											<th><h4>任课老师</h4></th>
-											<th><h4>课程ID</h4></th>
-											<th><h4>学习时间</h4></th>
-											
-										</tr>
-									<?php 
-									
-									if(isset($_POST['submit'])){
-									    $query="select student_number from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
-									    $result=execute($link,$query);
-									    $S=mysqli_fetch_array($result);//学生号码
-									    $query="select * from CM_student_course where student_number='{$S['student_number']}'";
-									    
-									    $result=execute($link,$query);
-									    while($data=mysqli_fetch_assoc($result)){
-									    
-									        $query="select * from CM_course where cID='{$data['cID']}' and course_name like '%{$_POST['search']}%'";
-									    
-									        $result2=execute($link,$query);
-									        $M=mysqli_fetch_array($result2);
-									        if($M['course_name']==NULL){continue;}
-									        $query="select * from CM_teacher where tID='{$M['tID']}'";
-									    
-									        $result3=execute($link,$query);
-									        $T=mysqli_fetch_array($result3);
-									        $url=urlencode("xuanze_delete.php?id={$M['cID']}");
-									        $return_url=urlencode($_SERVER['REQUEST_URI']);
-									        $message="你真的要撤掉这门课嘛 {$M['course_name']} 吗？";
-									        $add_url="confirm.php?url={$url}&return_url={$return_url}&message={$message}";
-									        
-									        $info_url="courseinfo.php?cID={$data['cID']}";
-									    
-									        	
-									        $html=<<<A
-                   
-			                             <tr>
-				                            <td></br><input class="sort" type="button" name="sort[{$data['cID']}]" value="{$data['cID']}"  style = "margin-left:12px;font-size:10px"/></td>
-				                            <td></br><h5>{$M['course_name']}[cID:{$M['cID']}]</h5></td>
-				                            <td></br><h5>{$T['teacher_name']}</h5></td>
-				                            <td></br><h5>{$M['course_college']}</h5></td>
-									    
-				                            <td></br><div class="alert open" style="color:#00F" onclick="mizhu.open(200, 450, '</br>课程详情', '$info_url' );"><h5>[查看详细]</h5></div><a href="$add_url"><h5>[撤课]</h5></a></td>
-									    
-			                            </tr>
-									    
-A;
-									        echo $html;
-									    }
-									}else{ $query="select student_number from CM_student where register_name='{$_COOKIE['cookie']['name']}'";
-	                                $result=execute($link,$query);
-		                            $S=mysqli_fetch_array($result);//学生号码
-		                            $query="select * from CM_student_course where student_number='{$S['student_number']}'";
-	
-		                              $result=execute($link,$query);
-		                          while($data=mysqli_fetch_assoc($result)){
-		
-		                               $query="select * from CM_course where cID='{$data['cID']}'";
-		    
-		                                $result2=execute($link,$query);
-		                                $M=mysqli_fetch_array($result2);
-		                                $query="select * from CM_teacher where tID='{$M['tID']}'";
-		    
-		                                $result3=execute($link,$query);
-		                               $T=mysqli_fetch_array($result3);
-		                              $url=urlencode("xuanze_delete.php?id={$M['cID']}");
-			                          $return_url=urlencode($_SERVER['REQUEST_URI']);
-			                          $message="你真的要撤掉这门课嘛 {$M['course_name']} 吗？";
-			                          $add_url="confirm.php?url={$url}&return_url={$return_url}&message={$message}";
-			
-		                              $info_url="courseinfo.php?cID={$data['cID']}";      
-			
-                                      $html=<<<A
-                                     
-			                             <tr>
-				                            <td></br><input class="sort" type="button" name="sort[{$data['cID']}]" value="{$data['cID']}"  style = "margin-left:12px;font-size:10px"/></td>
-				                            <td></br><h5>{$M['course_name']}[cID:{$M['cID']}]</h5></td>
-				                            <td></br><h5>{$T['teacher_name']}</h5></td>
-				                            <td></br><h5>{$M['course_college']}</h5></td>
-				
-				                            <td></br><div class="alert open" style="color:#00F" onclick="mizhu.open(200, 450, '</br>课程详情', '$info_url');"><h5>[查看详细]</h5></div><a href="$add_url"><h5>[撤课]</h5></a></td>
-		                                    
-			                            </tr>
-				
-A;
-			                        echo $html;
-		                            }}
-		                           
-		                          ?>
-	                        </table>
-	        <div id="pagiDiv" align="left" style="width:1200px">
-        <span id="spanFirst">First</span>  
-        <span id="spanPre">Pre</span>  
-        <span id="spanNext">Next</span>  
-        <span id="spanLast">Last</span>  
-        The <span id="spanPageNum"></span> Page/Total <span id="spanTotalPage"></span> Page
-        </div>
-        </div>
-	                       </form>
-                           </div>
-                        
-    	
-									
-	
-	
-						</div>
-									</div>
-								</div
+								</div></div></div></div>

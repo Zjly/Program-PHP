@@ -9,14 +9,22 @@ $("input[id='getcode']").click(btnCheck);
 		  function vertiCodeSend(){
 			  var data;
       $.ajax({
-		  async:false,
+	async:false,
       url:"sentcode.php",  //发送验证码的php页面
       data:{"member_mail":mail},//传入后台
       type:"POST",//类型
 	  dataType:"json",
 	  success:function(result){
+console.log(typeof result);
+console.log(result);
+
 		  data = result.a;
-	  }
+	  },
+error:function(result){
+console.log(typeof result);
+console.log(result);
+
+}
       });
 	  console.log(data);
 	  return data;

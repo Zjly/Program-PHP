@@ -14,6 +14,7 @@ if($member_id){
     if(isset($_POST['submit'])){
 
         escape($link,$_POST);
+        $_POST=escape_js($_POST);
         $query="select * from CM_register where register_name='{$_POST['name']}' and register_password=md5('{$_POST['pw']}')";
         $result=execute($link, $query);
         include 'inc/check_login.inc.php';
@@ -78,7 +79,7 @@ include_once 'inc/head.inc.php';?>
 								</div>
 							</div>
 							<div class="form_btn">
-								 <input class="btn" name="submit" type="submit" value="登陆"style = "background: #FF7F50;color:black;height: 35;width:300 ;margin-left: 0px;margin-top: 0px" />
+								 <input class="btn" name="submit" type="submit" value="登录"style = "background: #FF7F50;color:black;height: 35;width:300 ;margin-left: 0px;margin-top: 0px" />
 							</div>
 							<div class="form_reg_btn">
 								<span>还没有帐号？</span><a href="register.php">马上注册</a>

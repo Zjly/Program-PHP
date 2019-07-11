@@ -5,6 +5,10 @@ include_once '../inc/tool.inc.php';
 $template['title']='学生版块-修改';
 $template['css']=array('style/public.css');
 $link=connect();
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 	skip('user_module.php','error','id参数错误！');
 }
@@ -17,6 +21,8 @@ if(!mysqli_num_rows($result)){
 if(isset($_POST['submit'])){
 	//验证
 	$check_flag='update';
+	$_POST=escape($link,$_POST);
+	$_POST=escape_js($_POST);
 	include 'inc/check_son_module.inc.php';
 	$query="select * from CM_student where student_number='{$_POST['student_number']}' and student_number <>'{$data['student_number']}'";
 	$result=execute($link,$query);

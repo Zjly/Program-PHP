@@ -54,13 +54,7 @@ $query="select * from CM_course where course_id='{$course_id}'";
                             <li><a href="course.php">课程资源</a>
                                 
                             </li>
-                            <li><a href="kecheng.php">课程分类</a>
-                                <ul class="dropdown">
-                                    <li><a href="">计算机类</a></li>
-                                    <li><a href="">文学类</a></li>
-                                    <li><a href="">通识类</a></li>
-                                </ul>
-                            </li>
+                            
                             
                             <li><a href="person.php">个人信息</a>
                                
@@ -99,6 +93,7 @@ $query="select * from CM_course where course_id='{$course_id}'";
 <div class="col-md-8 col-sm-12 col-xs-12">
 <!-- Single blog -->
 <div class="single-blog">
+<div style="width:730px;height:1350px;background:white;position:relative;left:0px;top:20px;border-radius:10px">
 
 <div class="video">
 	<div class="container" >
@@ -137,7 +132,7 @@ function close1(){
 	$('.videos').html();
 }
 </script>
-                            <div class="blog-content">
+                            <div class="blog-content" style="margin-left:20;margin-right:20">
                                <?php include_once 'index.inc/index2.inc.php';?>
                                
                                 <p>今天我们在不断前行、探索未来的同时，时常会驻足思考作为物质世界的发展史。我们周围的物质世界是如何发展到今天？构成物质世界的基础是材料，材料发展与人类文明进程有怎样的关系？未来的新材料又会怎样影响我们？本课程将会带来大家一起走进神奇的材料世界，探秘材料背后的精彩，发现身边的美好。</p>
@@ -172,6 +167,7 @@ function close1(){
                                                    <br><label>第十章  不可思议的纳米材料</label>
                                                <br><label>第十一章  各显神通的能源材料</label>
                             </div>
+			</div>
                         </div><!--/ End Single blog -->
 
                        <!-- Blog Comment Wrappper-->
@@ -184,15 +180,12 @@ function close1(){
                   <div class="col-12 col-sm-12 col-md-4 col-lg-4 blog_wrapper_right ">
                       <div class="blog-right-items">
                   
-                          <div class="search_blog widget_single">
-                              <div class="form-full-box">
-                                  <form>
-                                      <div class="form-group">
-                                          <input class="form-control" name="name" placeholder="课程名称"  type="text">
-                                          <button class="register-btn" type="submit"><i class="fa fa-search"></i></button>
-                                      </div>
-                                  </form>
-                              </div>
+                          <div style="margin-top:20;border:solid 2px #ffffff;border-radius:10px ">
+                              
+                                  
+					<img src="images/whulogo.jpg" >
+                                   
+                              
                           </div>
                   
                   
@@ -313,7 +306,7 @@ function close1(){
 							<p>代码全写队 <br> 产品经理： 项目经理： 技术经理： 成员：</p>
 						</div>
 						<ul class="footer-contact">
-							<li><img class="map" src="images/icon/map.png" alt="">武汉大学</li>
+							
 							<li><img class="map" src="images/icon/phone.png" alt="">+123-456-7890</li>
 							<li><img class="map" src="images/icon/gmail.png" alt="">123456789@qq.com</li>
 						</ul>

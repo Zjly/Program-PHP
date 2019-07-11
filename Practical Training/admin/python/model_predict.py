@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import io
 import sys
 import urllib.parse
@@ -17,7 +18,7 @@ def comment_predict(data):
 	:return:
 	"""
 	# 建立模型时用到的评论数据
-	predict_data = pd.read_csv("python/courses.csv")
+	predict_data = pd.read_csv("/var/www/test/admin/python/courses.csv")
 
 	def chinese_word_cut(text):
 		"""
@@ -52,7 +53,7 @@ def comment_predict(data):
 		return custom_stopwords_list
 
 	# 得到停用词表
-	stop_words_file = "python/stop_words/哈工大停用词表.txt"
+	stop_words_file = "/var/www/test/admin/python/stop_words/哈工大停用词表.txt"
 	stopwords = get_custom_stopwords(stop_words_file)
 
 	# 计算特征数值
@@ -89,10 +90,10 @@ def comment_predict(data):
 	net = tflearn.regression(net, optimizer='adam', learning_rate=1e-4, loss='categorical_crossentropy')
 
 	# 初始化
-	model = tflearn.DNN(net, tensorboard_verbose=0, tensorboard_dir="python/tflearn_data/tflearn_logs/")
+	model = tflearn.DNN(net, tensorboard_verbose=0, tensorboard_dir="/var/www/test/admin/python/tflearn_data/tflearn_logs/")
 
 	# 加载模型
-	model.load("python/tflearn_data/tflearn_models/2019-07-08 11.51.40.170202(200, 42)/model")
+	model.load("/var/www/test/admin/python/tflearn_data/tflearn_models/2019-07-08 11.51.40.170202(200, 42)/model")
 
 	# ———————————————————————————————————————预测部分———————————————————————————————————————
 	# 待预测的评论数据
@@ -141,7 +142,6 @@ def get_type(predict_Y):
 				print("艺术与欣赏类")
 
 if __name__ == '__main__':
-	sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-	comment = urllib.parse.unquote(sys.argv[1])
+	comment = sys.argv[1]
 	data = pd.DataFrame({'name': comment}, index=[0])
 	comment_predict(data)

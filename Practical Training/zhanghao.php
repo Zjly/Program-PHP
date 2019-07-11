@@ -7,7 +7,28 @@ include_once 'inc/upload.inc.php';
 $link=connect();
 $member_id=is_login($link);
 $php='zhanghao';
-
+if(!isset($_COOKIE['cookie']['name'])){
+    skip('login.php', 'error', '给我去登陆');
+}
+if(!empty($_POST['photo_small'])){
+$imgdata = substr($_POST['photo_small'],strpos($_POST['photo_small'],",") + 1);
+$decodedData = base64_decode($imgdata);
+$date = date('/Y-m-d-h-i-s');
+$save_path="photo_small{$date}{$_COOKIE['cookie']['name']}.png";
+$f=file_put_contents($save_path,$decodedData );
+if($f){
+$query="update CM_register set register_photo_small='{$save_path}' where register_name='{$_COOKIE['cookie']['name']}'";
+execute($link, $query);
+/*if(mysqli_affected_rows($link)==1){
+    skip("zhanghao.php?id={$_COOKIE['cookie']['name']}",'ok','头像设置成功！');
+}else{
+    skip('zhanghao.php','error','头像设置失败，请重试');
+}
+}else{
+    skip('zhanghao.php','error','头像设置失败，请重试');
+}*/
+}
+}
 
 @$query="select * from CM_register where register_name='{$_COOKIE['cookie']['name']}'";
 $result_memebr=execute($link, $query);
@@ -36,6 +57,7 @@ if(isset($_POST['submit'])){
         skip('zhanghao.php', 'error',$upload['error']);
     }
 }
+
     include_once 'inc/head.inc.php';
     
     ?>
@@ -65,8 +87,6 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="all">
 
-<link rel="stylesheet" type="text/css" href="css1//css1/ycbootstrap.css">
-<link rel="stylesheet" type="text/css" href="css1/css1/reset.css">
 
 <script src="js1/js/jquery.min.js" type="text/javascript"></script>
 <script src="plugins/cover_js/iscroll-zoom.js" type="text/javascript" charset="utf-8"></script>
@@ -74,6 +94,23 @@ if(isset($_POST['submit'])){
 <script src="plugins/cover_js/lrz.all.bundle.js" type="text/javascript" charset="utf-8"></script>
 <script src="plugins/cover_js/jquery.photoClip.min.js" type="text/javascript" charset="utf-8"></script>
 
+<style>
+.ShaShiDi{
+width:240px;
+height:350px;
+display:flex;
+align-items:center;
+justify-content:center;
+			/*为了效果明显，可以将如下边框打开，看一下效果*/
+			/* border:1px solid black; */
+}
+
+.ShaShiDi img{
+	width:100%;
+	height:auto;
+}
+
+</style>
 
 
 </head>
@@ -88,7 +125,7 @@ if(isset($_POST['submit'])){
 									<div class="ydc-group-table">
 									<br><br>
 									<div id="main" style = "margin-left:0px;font-size:15px">
-								<script src="/demos/googlegg.js"></script>
+								
 <div class="yc-upload-wrap">
 	<div class="yc-upload-box">
 		<div class="container">
@@ -107,6 +144,7 @@ if(isset($_POST['submit'])){
 						<div class="ycupload-line"></div>
 						<div style="height:30px;"></div>
 						<div  style="min-height:1px;">
+							<form method="post" enctype="multipart/form-data" >
 							<div class="container">
 								<div class="row">
 									<div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0;padding-left:36px;">
@@ -123,16 +161,19 @@ if(isset($_POST['submit'])){
 													<div id="clipArea" style="margin:10px;height: 520px;"></div>
 													<div class="" style="height:56px;line-height:36px;text-align: center;padding-top:0px;">
 														<button id="clipBtn" style="width:120px;height: 36px;border-radius: 4px;background-color:#ff8a00;color: #FFFFFF;font-size: 14px;text-align: center;line-height: 36px;outline: none;"class="submit" type="submit" name="submit" value="保存">保存</button>
-													</div>
+													<button id="clipBtn" style="width:120px;height: 36px;border-radius: 4px;background-color:#ff8a00;color: #FFFFFF;font-size: 14px;text-align: center;line-height: 36px;outline: none;" onclick="javascript:history.go(-1);">返回</button>
+
+														</div>
 												</div>
 											</div>
-											<div id="view" style="width:214px;height:160.5px;" title="请上传 428*321 的封面图片">
-											 <img src="<?php if($data_member['register_photo']!=''){echo SUB_URL.$data_member['register_photo'];}else{echo 'style/photo.jpg';}?>">
-											</div>
-											<div style="height:10px;"></div>
+											<div id="view" style="width:0;height:0;padding-left:500px"  >
+<div class="ShaShiDi">
+											 <img src="<?php if($data_member['register_photo_small']!=''){echo SUB_URL.$data_member['register_photo_small'];}else if($data_member['register_photo']!=''){echo SUB_URL.$data_member['register_photo'];}else{echo 'style/photo.jpg';}?> "style="marign-top:30px">
+											</div></div>
+											<div style="height:10px;padding-top:130px;"></div>
 											<div  style="width:140px;height:32px;border-radius: 4px;background-color:#ff8a00;color: #FFFFFF;font-size: 14px;text-align:center;line-height:32px;outline:none;margin-left:37px;position:relative;">
 												上传头像
-												<input type="file" id="file" style="cursor:pointer;opacity:0;filter:alpha(opacity=0);width:100%;height:100%;position:absolute;top:0;left:0;">
+												<input type="file" id="file" name="photo" style="cursor:pointer;opacity:0;filter:alpha(opacity=0);width:100%;height:100%;position:absolute;top:0;left:0;">
 											</div>
 										</div>
 										
@@ -140,7 +181,7 @@ if(isset($_POST['submit'])){
 									</div>
 								</div>
 							</div>
-							
+							</form>
 						</div>
 						<div style="height:25px;"></div>
 					</div>
@@ -156,12 +197,14 @@ if(isset($_POST['submit'])){
 //上传封面
 //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 var clipArea = new bjj.PhotoClip("#clipArea", {
-	size: [428, 321],// 截取框的宽和高组成的数组。默认值为[260,260]
-	outputSize: [428, 321], // 输出图像的宽和高组成的数组。默认值为[0,0]，表示输出图像原始大小
+	size: [400, 400],// 截取框的宽和高组成的数组。默认值为[260,260]
+	outputSize: [400, 400], // 输出图像的宽和高组成的数组。默认值为[0,0]，表示输出图像原始大小
 	//outputType: "jpg", // 指定输出图片的类型，可选 "jpg" 和 "png" 两种种类型，默认为 "jpg"
 	file: "#file", // 上传图片的<input type="file">控件的选择器或者DOM对象
 	view: "#view", // 显示截取后图像的容器的选择器或者DOM对象
+	name: "#photo",
 	ok: "#clipBtn", // 确认截图按钮的选择器或者DOM对象
+	type:"POST",
 	loadStart: function() {
 		// 开始加载的回调函数。this指向 fileReader 对象，并将正在加载的 file 对象作为参数传入
 		$('.cover-wrap').fadeIn();
@@ -177,6 +220,29 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
 		$('.cover-wrap').fadeOut();
 		$('#view').css('background-size','100% 100%');
 		console.log(dataURL);
+try{
+		$.ajax({
+		url:location.href,
+		type:"POST",
+		data:{"photo_small":dataURL},
+		success:function(result){
+			 console.log(result);
+			},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			 // 状态码
+                    console.log(XMLHttpRequest.status);
+                    // 状态
+                    console.log(XMLHttpRequest.readyState);
+                    // 错误信息   
+                    console.log(textStatus);
+			}
+			});
+}
+catch(e){
+alert(e)
+}
+
+
 	}
 });
 //clipArea.destroy();
@@ -185,7 +251,7 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
             <div class="container-fluid mb0 ">
                 <div class="row">
                     <div class="col-md-4">
-						<form class="form-horizontal"method= "post" style="margin-left: 50px;padding-top:30px">
+						<form class="form-horizontal"method= "post" style="margin-left: 50px;padding-top:60px">
                					   
                                   <div class="form-group clearfix ">
                    				   <label style="color:#333;font-size:16px;">账号：<?php echo $data_member ['register_name']?> </label>
@@ -208,10 +274,10 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
                          
                         </div>
                          
-                    </form></div>
-                    <div class="col-md-8"><label> </label><label style="color:#333;font-size:22px;">个人介绍:</label>
-                    <div > <br><label>123</label></div>
-                    </div>
+                    </form>
+		<br><br><br><br><br>
+		</div>
+                  
                    
                     
                            </div>

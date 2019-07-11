@@ -5,16 +5,25 @@ include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
 if(!empty($_POST['cname'])){
 	$a = $_POST['cname'];
-	$c = exec("python E:/PHP/htdocs/test/admin/python/model_predict.py {$a}",$out,$res);//调用python包
-	$d = $out[1];
+	$set_charset = 'export LANG=en_US.UTF-8;';
+   	$cmd = "/usr/bin/python3.5 /var/www/test/admin/python/model_predict.py {$a}";
+						
+        exec($set_charset.$cmd, $out, $res);
+        $d = $out[1];
 	echo json_encode(array("type"=>$d),JSON_UNESCAPED_UNICODE);
 	exit();
 }
-
+$link=connect();
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 if(isset($_POST['submit'])){
-	$link=connect();
+	
 	//验证用户填写的信息
 	//校园课程有关
+	$_POST=escape($link,$_POST);
+	$_POST=escape_js($_POST);
 	$check_flag='add';
 	if(empty($_POST['teacher_name'])||empty($_POST['course_id'])||empty($_POST['course_name'])){
 		skip('father_module_add.php','error','请输入必填信息！');

@@ -2,11 +2,17 @@
 include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
-
+$link=connect();
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 if(isset($_POST['submit'])){
-	$link=connect();
+	
 	//验证用户填写的信息
 	//校园课程有关
+	$_POST=escape($link,$_POST);
+	$_POST=escape_js($_POST);
 	$check_flag='add';
 	if(empty($_POST['teacher_name'])){
 		skip('son_module_add.php','error','请输入必填信息！');

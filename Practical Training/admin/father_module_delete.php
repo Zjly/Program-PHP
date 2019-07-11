@@ -6,6 +6,10 @@ if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 	skip('father_module.php','error','id参数错误！');
 }
 $link=connect();
+$member_id=is_login_manage($link);
+if($member_id==NULL){
+    skip('/test/index.php','error','非法登陆');
+}
 $query="delete from CM_course where cID={$_GET['id']}";
 execute($link,$query);
 if(mysqli_affected_rows($link)==1){

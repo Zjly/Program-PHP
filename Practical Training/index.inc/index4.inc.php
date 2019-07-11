@@ -8,8 +8,7 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <!-- Google Fonts Includes -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    
     <!-- Favi icon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <!-- bootstrap v3.3.6 css -->
