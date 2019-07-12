@@ -32,6 +32,9 @@ $array = array_slice($numbers,0,6);
 $X=0;
 while( $X<6 and $temp=$array[$X]  ){
    $temp=$Array_all[$temp];
+$query="select * from CM_course where cID='{$temp}'";
+   $result_class=execute($link,$query);
+   $class_all_popular=mysqli_fetch_array($result_class);
 $html1=<<<A
       
    
@@ -346,7 +349,37 @@ $html11=<<<A
 A;
 if($temp==40){
             echo $html11;} 
-
+$htmlxx=<<<A
+    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+    <div class="single-package">
+    <div class="package-image">
+    <a href="http://49.234.117.53/test/course_all.php?cID={$temp}"><img src="img/v1.jpg" alt=""></a>
+    </div>
+    <div class="package-content">
+    <h3><a href="http://49.234.117.53/test/course_all.php?cID={$temp}" title="">{$class_all_popular['course_name']}</a></h3>
+    <p>上传时间：07 02 课程ID：{$class_all_popular['course_id']}
+    </p>
+    </div>
+    <div class="package-calto-action">
+    <ul class="ct-action">
+    <li><a href="http://49.234.117.53/test/course_all.php?cID={$temp}" class="travel-booking-btn hvr-shutter-out-horizontal">进入课程</a></li>
+    <li>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div> <!-- second package end -->
+     
+A;
+    if($temp!=4 and $temp!=24and $temp!=40and $temp!=13and $temp!=15and $temp!=63and $temp!=44and $temp!=3 and $temp!=53 and $temp!=48 and $temp!=14){
+      
+       echo $htmlxx;
+    }     
 
         
     $X=$X+1;

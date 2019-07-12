@@ -9,11 +9,14 @@ $member_id=is_login_manage($link);
 if($member_id==NULL){
     skip('/test/index.php','error','非法登陆');
 }
+
+
 $template['title']='用户版块列表';
 $template['css']=array('style/public.css');
 if(empty($_COOKIE['cookie']['name'])){
     skip('login.php', 'error', '给我去登陆');
 }
+if($_COOKIE['cookie']['name']=='院系管理员'){  skip('/test/admin/father_module.php','error','非法登陆');}
 ?>
 <?php include 'inc/header.inc.php'
 //用户管理界面?>

@@ -27,7 +27,7 @@
 				<div class="des-city">
 					<a href="course1.php"><i class="fa fa-map-marker"></i>
 					C语言程序设计</a>
-					<h4>课程ID：20182047086 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182047086 <span>{$S['course_student_count']}人</span></h4>
 				</div> 
 					    
 </div> <!-- single popular destination  end-->
@@ -50,7 +50,7 @@ A;
 				</figure>
 				<div class="des-city">
 					<a href="course2.php"><i class="fa fa-map-marker"></i>物联网应用及安全</a>
-					<h4>课程ID：20182021300 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182021300 <span>{$S['course_student_count']}人</span></h4>
 				</div> 
 </div> <!-- single popular destination  end-->
 A;
@@ -72,7 +72,7 @@ A;
 				</figure>
 				<div class="des-city">
 					<a href="course3.php"><i class="fa fa-map-marker"></i>信息安全概论</a>
-					<h4>课程ID：20182047080 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182047080 <span>{$S['course_student_count']}人</span></h4>
 				</div> 
 </div> <!-- single popular destination  end-->
 A;
@@ -94,7 +94,7 @@ A;
 				</figure>
 				<div class="des-city">
 					<a href="course4.php"><i class="fa fa-map-marker"></i>计算机思维导论</a>
-					<h4>课程ID：20182021301 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182021301 <span>{$S['course_student_count']}人</span></h4>
 				</div> 
 </div> <!-- single popular destination  end-->
 A;
@@ -116,7 +116,7 @@ A;
 				</figure>
 				<div class="des-city">
 					<a href="course5.php"><i class="fa fa-map-marker"></i>身边的材料学</a>
-					<h4>课程ID：20182018155 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182018155 <span>{$S['course_student_count']}人</span></h4>
 				</div> 
 </div> <!-- single popular destination  end-->
 A;
@@ -139,7 +139,7 @@ A;
 				</figure>
 				<div class="des-city">
 					<a href="course6.php"><i class="fa fa-map-marker"></i>遥感技术应用及发展</a>
-					<h4>课程ID：20182023104 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182023104 <span>{$S['course_student_count']}人</span></h4>
 				</div> 
 </div> <!-- single popular destination  end-->
 A;
@@ -162,7 +162,7 @@ A;
 				</figure>
 				<div class="des-city">
 					<a href="course7.php"><i class="fa fa-map-marker"></i>航空航天概论</a>
-					<h4>课程ID：20182022193 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182022193 <span>{$S['course_student_count']}人</span></h4>
 				</div> 
 </div> <!-- single popular destination  end-->
 A;
@@ -185,7 +185,7 @@ $html=<<<A
 				</figure>
 				<div class="des-city">
 					<a href="course8.php"><i class="fa fa-map-marker"></i>自然计算方法导论</a>
-					<h4>课程ID：20182021299 <span>323 人</span></h4>
+					<h4>课程ID：20182021299 <span>{$S['course_student_count']}人</span></h4>
 				</div>
 </div> <!-- single popular destination  end-->
 A;
@@ -207,7 +207,7 @@ $html=<<<A
 				</figure>
 				<div class="des-city">
 					<a href="course9.php"><i class="fa fa-map-marker"></i>宇宙新概念</a>
-					<h4>课程ID：20182023104 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182023104 <span>{$S['course_student_count']}人</span></h4>
 				</div>
 			</div> <!-- single popular destination  end-->
 A;
@@ -231,7 +231,7 @@ $html=<<<A
 				</figure>
 				<div class="des-city">
 					<a href="course10.php"><i class="fa fa-map-marker"></i>信息素养与实践</a>
-					<h4>课程ID：20182053005 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182053005 <span>{$S['course_student_count']}人</span></h4>
 				</div>
 				</div>
 
@@ -254,7 +254,7 @@ $html=<<<A
 				</figure>
 				<div class="des-city">
 					<a href="course11.php"><i class="fa fa-map-marker"></i>哲学导论</a>
-					<h4>课程ID：20182033001 <span>{$S['course_student_count']}</span></h4>
+					<h4>课程ID：20182033001 <span>{$S['course_student_count']}人</span></h4>
 				</div>
 			</div>
 A;

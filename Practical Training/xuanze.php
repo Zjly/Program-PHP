@@ -43,40 +43,40 @@ $php='xuanze';
 
     <script type="text/javascript">
         //全局变量
-        var numCount1;       //数据总数量
-        var columnsCounts1;  //数据列数量
-        var pageCount1;      //每页显示的数量
-        var pageNum1;        //总页数
-        var currPageNum1 ;   //当前页数
+        var numCount;       //数据总数量
+        var columnsCounts;  //数据列数量
+        var pageCount;      //每页显示的数量
+        var pageNum;        //总页数
+        var currPageNum ;   //当前页数
 
         //页面标签变量
-        var blockTable1;
-        var preSpan1;
-        var firstSpan1;
-        var nextSpan1;
-        var lastSpan1;
-        var pageNumSpan1;
-        var currPageSpan1;
+        var blockTable;
+        var preSpan;
+        var firstSpan;
+        var nextSpan;
+        var lastSpan;
+        var pageNumSpan;
+        var currPageSpan;
 
 
 
         window.onload=function(){
             //页面标签变量
-            blockTable1 = document.getElementById("blocks");
-            preSpan1 = document.getElementById("spanPre");
-            firstSpan1 = document.getElementById("spanFirst");
-            nextSpan1 = document.getElementById("spanNext");
-            lastSpan1 = document.getElementById("spanLast");
-            pageNumSpan1 = document.getElementById("spanTotalPage");
-            currPageSpan1 = document.getElementById("spanPageNum");
+            blockTable = document.getElementById("blocks");
+            preSpan = document.getElementById("spanPre");
+            firstSpan = document.getElementById("spanFirst");
+            nextSpan = document.getElementById("spanNext");
+            lastSpan = document.getElementById("spanLast");
+            pageNumSpan = document.getElementById("spanTotalPage");
+            currPageSpan = document.getElementById("spanPageNum");
 
-            numCount1 = document.getElementById("blocks").rows.length - 1;       //取table的行数作为数据总数量（减去标题行1）
+            numCount = document.getElementById("blocks").rows.length - 1;       //取table的行数作为数据总数量（减去标题行1）
             //alert(numCount);可以弹出窗口说明总数
-            columnsCounts1 = blockTable.rows[0].cells.length;
-            pageCount1 = 5;
-            pageNum1 = parseInt(numCount/pageCount);
-            if(0 != numCoun1t%pageCount1){
-                pageNum1 += 1;
+            columnsCounts = blockTable.rows[0].cells.length;
+            pageCount = 5;
+            pageNum = parseInt(numCount/pageCount);
+            if(0 != numCount%pageCount){
+                pageNum += 1;
             }
 
             firstPage();
@@ -136,11 +136,12 @@ $php='xuanze';
 					<!--课程表-->
 					<div class="ydc-group-table">
 					
-						<div id="main" style = "margin-left:0px;font-size:15px">
+						<div id="main" style = "margin-left:0px;font-size:15px;width:930">
 							<div class="title" style = "font-size:20px">课程</div>
 								<form method="post">
 									<div class="container">
 										<table  id="blocks" class="list" style="margin-top:25px;width:950px;table-layout:fixed">
+
 											<tr>
 												<th style = "width:100px"><h4>课程序号</h4></th>	 	 	
 												<th style = "width:400px"><h4>名字</h4></th>
@@ -148,6 +149,7 @@ $php='xuanze';
 												<th><h4>院系</h4></th>
 												<th><h4>操作</h4></th>
 											</tr>
+
 										
 <!--读取数据库-->									
 <?php if(isset($_POST['submit'])){
@@ -179,12 +181,26 @@ $html=<<<A
 				<td></br><div class="alert open" style="color:#00F" onclick="mizhu.open(200, 450, '</br>课程详情', '$info_url');"><h5>[查看详细]</h5></div><a href="$add_url"><h5>[选课]</h5></a></td>
 		                                    
 			</tr>
+
+
 										
 				
 A;
 		echo $html;
 										
 		}
+$html2=<<<A
+</table>
+<div id="pagiDiv" align="left" style="width:1200px;margin-left:180px">
+        		<span id="spanFirst" class="ydc-previous-item-btn-medium">First</span>  
+        		<span id="spanPre" class="ydc-previous-item-btn-medium">Pre</span>  
+        		<span id="spanNext" class="ydc-previous-item-btn-medium">Next</span>  
+        		<span id="spanLast" class="ydc-previous-item-btn-medium">Last</span>  
+       		 The <span id="spanPageNum" class="ydc-previous-item-btn-medium cur"></span> Page/Total <span id="spanTotalPage" class="ydc-previous-item-btn-medium "></span> Page
+        </div>
+A;
+		echo $html2;
+
 	}
 	else if(isset($_POST['tuijian'])){
 		   if(@$_COOKIE['cookie']['name']==NULL){echo "<script type='text/javascript'>alert('请登陆');</script>";return;
@@ -230,6 +246,11 @@ $html=<<<A
 A;
 			echo $html;
 		}
+$html2=<<<A
+</table>
+A;
+		echo $html2;
+
 
 		
 	}else{
@@ -264,11 +285,24 @@ $html=<<<A
 				
 A;
 			echo $html;
-		}}
+		}
+$html2=<<<A
+</table>
+A;
+		echo $html2;
+}
 		
 		?>
 		
-										</table>
+<div id="pageDiv" align="left" style="width:1200px;display:none" >
+        <span id="spanFirst"></span>  
+        <span id="spanPre"></span>  
+        <span id="spanNext"></span>  
+        <span id="spanLast"></span>  
+        The <span id="spanPageNum"></span> <span id="spanTotalPage"></span> 
+ </div>
+
+
 
 										
 										

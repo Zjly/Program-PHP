@@ -115,7 +115,7 @@ $php='class1';
 									<div class="ydc-group-altogether">共<span>#</span>门课程</div>
 									<div class="ydc-group-table">
 									
-									<div id="main" style = "margin-left:0px;font-size:15px">
+									<div id="main" style = "margin-left:0px;font-size:15px;width:930">
 									<div class="title" style = "font-size:20px">课程</div>
 									<form method="post">
 									<div class="container">
@@ -155,13 +155,14 @@ $php='class1';
 									        $add_url="confirm.php?url={$url}&return_url={$return_url}&message={$message}";
 									        
 									        $info_url="courseinfo.php?cID={$data['cID']}";
-									    
+									   	$course_url="course_all.php?cID={$data['cID']}";
+
 									        	
 									        $html=<<<A
                    
 			                             <tr>
 				                            <td></br><input class="sort" type="button" name="sort[{$data['cID']}]" value="{$data['cID']}"  style = "margin-left:12px;font-size:10px"/></td>
-				                            <td></br><h5>{$M['course_name']}[cID:{$M['cID']}]</h5></td>
+				                            <td></br><h5><a href = {$course_url}>{$M['course_name']}[cID:{$M['cID']}]</a></h5></td>
 				                            <td></br><h5>{$T['teacher_name']}</h5></td>
 				                            <td></br><h5>{$M['course_college']}</h5></td>
 									    
@@ -193,13 +194,15 @@ A;
 			                          $message="你真的要撤掉这门课嘛 {$M['course_name']} 吗？";
 			                          $add_url="confirm.php?url={$url}&return_url={$return_url}&message={$message}";
 			
-		                              $info_url="courseinfo.php?cID={$data['cID']}";      
+		                              $info_url="courseinfo.php?cID={$data['cID']}"; 
+						$course_url="course_all.php?cID={$data['cID']}";
+     
 			
                                       $html=<<<A
                                      
 			                             <tr>
 				                            <td></br><input class="sort" type="button" name="sort[{$data['cID']}]" value="{$data['cID']}"  style = "margin-left:12px;font-size:10px"/></td>
-				                            <td></br><h5>{$M['course_name']}[cID:{$M['cID']}]</h5></td>
+				                            <td></br><h5><a href = {$course_url}>{$M['course_name']}[cID:{$M['cID']}]</a></h5></td>
 				                            <td></br><h5>{$T['teacher_name']}</h5></td>
 				                            <td></br><h5>{$M['course_college']}</h5></td>
 				

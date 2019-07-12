@@ -4,7 +4,7 @@ include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
 include_once 'inc/page.inc2.php';
 $link=connect();
-
+if (@$_COOKIE['member_id']!='院系管理' or $_COOKIE['member_id']!='管理员'  ){ skip('index.php','error','非法');}
 $query="select * from CM_course ";
 $result=execute($link,$query);
 

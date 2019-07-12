@@ -424,8 +424,9 @@ $member_id=is_login($link);
 					<p>共同学习 共同成长 优质精品学习资源  </p>
 				</div>
 			</div>
-		</div>
+		
 		<?php include_once 'index.inc/index_recommend.php';?>
+</div>
 		</div>
 
 </section> <!--end  popular packajge -->

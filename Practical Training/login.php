@@ -8,9 +8,13 @@ $link=connect();
 
 $member_id=is_login($link);
 if($member_id){
+    if($_COOKIE['member_id']=='学生'or $_COOKIE['member_id']=='管理员' or $_COOKIE['member_id']=='院系管理'){
+    if($_COOKIE['member_id']=='学生');
     skip('index.php','error','你已经登录，请不要重复登录！');
+    if($_COOKIE['member_id']=='管理员' or $_COOKIE['member_id']=='院系管理');
+    skip('admin/father_module.php','error','你已经登录，请不要重复登录！');
+    }else{  skip('logout.php','error','非法登陆');}
 }
-
     if(isset($_POST['submit'])){
 
         escape($link,$_POST);

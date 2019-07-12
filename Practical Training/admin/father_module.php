@@ -7,6 +7,9 @@ $member_id=is_login_manage($link);
 if($member_id==NULL){
     skip('/test/index.php','error','非法登陆');
 }
+if(isset($_POST['submit4'])){
+    skip('../test2.php','ok','正在更新');
+}
 $template['title']='课程板块';
 $template['css']=array('style/public.css');
 ?>
@@ -25,7 +28,8 @@ $template['css']=array('style/public.css');
 
                                 <button class="layui-btn layui-btn-blue" name = "submit2">查询</button>
                                  <button class="layui-btn layui-btn-blue" name = "submit3" onclick="href='register_module.php'"> 返回</button>
-                            </div>
+                                       <button class="layui-btn layui-btn-blue" name = "submit4"> 课程更新</button>
+  </div>
                         </div>
     <div class="container">
 	<table id="blocks" class="list" style="margin-top:25px;width:800px;table-layout:fixed">
